@@ -20,8 +20,8 @@ struct FacultiesView: View {
         .overlay(LoadingIndicator(displayIf: viewModel.isLoading))
         .embedInNavigationView(title: "Faculties")
         .searchable(text: $viewModel.search)
-        .refreshable { await viewModel.loadFaculties() }
-        .task { await viewModel.loadFaculties() }
+        .refreshable { viewModel.loadFaculties.send() }
+        .task { viewModel.loadFaculties.send() }
     }
 }
 

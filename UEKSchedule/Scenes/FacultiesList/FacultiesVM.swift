@@ -11,16 +11,30 @@ import SwiftSoup
 
 final class FacultiesVM: ObservableObject {
 
-    @Published private var allFaculties: [ScheduleGroup] = []
     @Published private(set) var faculties: [ScheduleGroup] = []
     @Published private(set) var isLoading = true
     @Published var search = ""
+    let loadFaculties = PassthroughSubject<Void, Never>()
 
     private var cancellables: Set<AnyCancellable> = []
     private let scheduleUrl = "https://planzajec.uek.krakow.pl/index.php"
 
     init() {
-        Publishers.CombineLatest($allFaculties, $search)
+        let faculties = loadFaculties
+            .handleEvents(receiveOutput: { [weak self] in
+                self?.faculties = []
+                self?.isLoading = true
+            })
+            .asyncMap { [weak self] in
+                await self?.fetchFaculties()
+            }
+            .compactMap { $0 }
+
+        Publishers.CombineLatest(faculties, $search)
+            .receive(on: DispatchQueue.main)
+            .handleEvents(receiveOutput: { [weak self] _, _ in
+                self?.isLoading = false
+            })
             .map { faculties, searchText in
                 searchText.isEmpty
                     ? faculties
@@ -29,19 +43,11 @@ final class FacultiesVM: ObservableObject {
             .assign(to: &$faculties)
     }
 
-    func loadFaculties() async {
-        allFaculties = []
-        isLoading = true
-        await fetchFaculties()
-    }
-
-    private func fetchFaculties() async {
-        guard let webContent = await APIService.shared.getWebContent(from: scheduleUrl) else { return }
-        let faculties = parseFaculties(from: webContent)
-        DispatchQueue.main.async { [weak self] in
-            self?.allFaculties = faculties
-            self?.isLoading = false
+    private func fetchFaculties() async -> [ScheduleGroup] {
+        guard let webContent = await APIService.shared.getWebContent(from: scheduleUrl) else {
+            return []
         }
+        return parseFaculties(from: webContent)
     }
 
     private func parseFaculties(from content: Document) -> [ScheduleGroup] {

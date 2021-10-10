@@ -21,7 +21,9 @@ struct FacultyGroupsView: View {
             ForEach(viewModel.facultyGroups) {
                 NavigationLink($0.name) {}
             }
+            .navigationTitle(faculty.name)
         }
+        .searchable(text: $viewModel.search)
         .onAppear { viewModel.faculty = faculty }
     }
 }
