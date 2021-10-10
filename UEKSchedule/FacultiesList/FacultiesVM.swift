@@ -11,43 +11,44 @@ import SwiftSoup
 
 final class FacultiesVM: ObservableObject {
 
+    @Published private var allFaculties: [Faculty] = []
     @Published private(set) var faculties: [Faculty] = []
-    @Published var search = ""
     @Published private(set) var isLoading = true
+    @Published var search = ""
 
     private var cancellables: Set<AnyCancellable> = []
     private let scheduleUrl = "https://planzajec.uek.krakow.pl/index.php"
 
     init() {
-        loadFaculties()
-    }
-
-    private func loadFaculties() {
-        APIService.shared.getWebContentFrom(url: scheduleUrl)
-            .flatMap { self.parseFaculties(from: $0) }
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                switch completion {
-                case let .failure(error):
-                    print(error)
-                case .finished:
-                    self?.isLoading = false
-                }
-            } receiveValue: { [weak self] faculties in
-                self?.faculties = faculties
+        Publishers.CombineLatest($allFaculties, $search)
+            .map { faculties, searchText in
+                searchText.isEmpty
+                    ? faculties
+                    : faculties.filter { $0.name.contains(searchText) }
             }
-            .store(in: &cancellables)
+            .assign(to: &$faculties)
     }
 
-    private func parseFaculties(from content: Document) -> AnyPublisher<[Faculty], AppError> {
+    func loadFaculties() async {
+        allFaculties = []
+        isLoading = true
+        await fetchFaculties()
+    }
+
+    private func fetchFaculties() async {
+        guard let webContent = await APIService.shared.getWebContent(from: scheduleUrl) else { return }
+        let faculties = parseFaculties(from: webContent)
+        DispatchQueue.main.async { [weak self] in
+            self?.allFaculties = faculties
+            self?.isLoading = false
+        }
+    }
+
+    private func parseFaculties(from content: Document) -> [Faculty] {
         guard let groups = try? content.getElementsByClass("kategorie").array().second,
               let faculties = try? groups.select("a").array()
-        else {
-            return Fail<[Faculty], AppError>(error: AppError.getWebContent).eraseToAnyPublisher()
-        }
-        return Just(faculties.compactMap { getFaculty(from: $0) })
-            .setFailureType(to: AppError.self)
-            .eraseToAnyPublisher()
+        else { return [] }
+        return faculties.compactMap { getFaculty(from: $0) }
     }
 
     private func getFaculty(from element: Element) -> Faculty? {

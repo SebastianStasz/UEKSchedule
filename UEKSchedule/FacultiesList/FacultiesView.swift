@@ -19,9 +19,11 @@ struct FacultiesView: View {
                 }
             }
         }
-        .searchable(text: $viewModel.search)
         .overlay(activityIndicator)
         .embedInNavigationView(title: "Faculties")
+        .searchable(text: $viewModel.search)
+        .refreshable { await viewModel.loadFaculties() }
+        .task { await viewModel.loadFaculties() }
     }
 
     private var activityIndicator: some View {
