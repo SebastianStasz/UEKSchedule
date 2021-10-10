@@ -1,23 +1,47 @@
 //
-//  SchduleVM.swift
+//  ScheduleVM.swift
 //  UEKSchedule
 //
 //  Created by Sebastian Staszczyk on 10/10/2021.
 //
 
+import Combine
 import EventKit
 import Foundation
 import SwiftSoup
 
-final class SchduleVM: ObservableObject {
-    private let eventStore = EKEventStore()
+final class ScheduleVM: ObservableObject {
+
+    @Published private var calendarService: CalendarService
+    let facultyGroup: ScheduleGroup
+
     @Published private(set) var events: [Event] = []
-    @Published var facultyGroup: ScheduleGroup?
     @Published var noCalendarAccessPopup = false
+    @Published private(set) var calendarExists = false
+
+    init(facultyGroup: ScheduleGroup) {
+        self.facultyGroup = facultyGroup
+        self.calendarService = .init(facultyGroup: facultyGroup)
+
+        calendarService.$calendar
+            .map { $0 != nil }
+            .assign(to: &$calendarExists)
+    }
+
+    func createCalendar() {
+        calendarService.createCalendar()
+    }
+
+    func checkCalendarAccess() async {
+        guard await calendarService.checkCalendarAccess() else {
+            noCalendarAccessPopup = true
+            return
+        }
+        getEvents()
+    }
 
     private func getEvents() {
-        $facultyGroup
-            .compactMap { $0 }
+        Just(facultyGroup)
             .asyncMap { [weak self] facultyGroup in
                 var url = "https://planzajec.uek.krakow.pl/" + facultyGroup.url
                 url.removeLast()
@@ -58,21 +82,5 @@ final class SchduleVM: ObservableObject {
         } catch {
             return nil
         }
-    }
-
-    func checkCalendarAccess() async {
-        switch EKEventStore.authorizationStatus(for: .event) {
-        case .authorized:
-            getEvents()
-        case .notDetermined:
-            await requestAccessToCalendar()
-        default:
-            noCalendarAccessPopup = true
-        }
-    }
-
-    private func requestAccessToCalendar() async {
-        _ = try? await eventStore.requestAccess(to: .event)
-        await checkCalendarAccess()
     }
 }

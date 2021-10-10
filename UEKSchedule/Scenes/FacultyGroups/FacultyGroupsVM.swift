@@ -12,6 +12,7 @@ import SwiftSoup
 final class FacultyGroupsVM: ObservableObject {
 
     @Published private(set) var facultyGroups: [ScheduleGroup] = []
+    @Published var scheduleVM: ScheduleVM?
     @Published var faculty: ScheduleGroup?
     @Published var search = ""
 

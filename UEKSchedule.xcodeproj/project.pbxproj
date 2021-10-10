@@ -22,8 +22,11 @@
 		FCF2352B2712F67800E717D5 /* Publisher+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2352A2712F67800E717D5 /* Publisher+Ext.swift */; };
 		FCF2352F2712F7BA00E717D5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2352E2712F7BA00E717D5 /* LoadingIndicator.swift */; };
 		FCF2353227130BC300E717D5 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2353127130BC300E717D5 /* ScheduleView.swift */; };
-		FCF2353427130C1100E717D5 /* SchduleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2353327130C1100E717D5 /* SchduleVM.swift */; };
+		FCF2353427130C1100E717D5 /* ScheduleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2353327130C1100E717D5 /* ScheduleVM.swift */; };
 		FCF235372713178800E717D5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235362713178800E717D5 /* Event.swift */; };
+		FCF2353A2713292700E717D5 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235392713292700E717D5 /* EventList.swift */; };
+		FCF2353E27132FF700E717D5 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2353D27132FF700E717D5 /* CalendarService.swift */; };
+		FCF2354027133A3400E717D5 /* View+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2353F27133A3400E717D5 /* View+Navigation.swift */; };
 		FCF408CF2711DDF900F24340 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = FCF408CE2711DDF900F24340 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +48,11 @@
 		FCF2352A2712F67800E717D5 /* Publisher+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Ext.swift"; sourceTree = "<group>"; };
 		FCF2352E2712F7BA00E717D5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		FCF2353127130BC300E717D5 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
-		FCF2353327130C1100E717D5 /* SchduleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchduleVM.swift; sourceTree = "<group>"; };
+		FCF2353327130C1100E717D5 /* ScheduleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVM.swift; sourceTree = "<group>"; };
 		FCF235362713178800E717D5 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FCF235392713292700E717D5 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
+		FCF2353D27132FF700E717D5 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		FCF2353F27133A3400E717D5 /* View+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Navigation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 			children = (
 				FCEF433E270E3A5D0073E566 /* Info.plist */,
 				FCEF432E270E37DD0073E566 /* UEKScheduleApp.swift */,
+				FCF2353D27132FF700E717D5 /* CalendarService.swift */,
 				FCF235172712CE7B00E717D5 /* APIService.swift */,
 				FCF2352D2712F7AA00E717D5 /* Views */,
 				FCF2351C2712DB6700E717D5 /* ViewModifiers */,
@@ -116,6 +123,7 @@
 			children = (
 				FCF2351A2712DAA400E717D5 /* Array+Ext.swift */,
 				FCF2352A2712F67800E717D5 /* Publisher+Ext.swift */,
+				FCF2353F27133A3400E717D5 /* View+Navigation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -144,6 +152,7 @@
 				FCF2353027130BB000E717D5 /* Schedule */,
 				FCF235212712EE9400E717D5 /* FacultyGroups */,
 				FCF235162712CAA800E717D5 /* FacultiesList */,
+				FCF235392713292700E717D5 /* EventList.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -160,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF2353127130BC300E717D5 /* ScheduleView.swift */,
-				FCF2353327130C1100E717D5 /* SchduleVM.swift */,
+				FCF2353327130C1100E717D5 /* ScheduleVM.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -262,13 +271,16 @@
 				FCEF432F270E37DD0073E566 /* UEKScheduleApp.swift in Sources */,
 				FCF2352B2712F67800E717D5 /* Publisher+Ext.swift in Sources */,
 				FCF2353227130BC300E717D5 /* ScheduleView.swift in Sources */,
-				FCF2353427130C1100E717D5 /* SchduleVM.swift in Sources */,
+				FCF2353427130C1100E717D5 /* ScheduleVM.swift in Sources */,
+				FCF2354027133A3400E717D5 /* View+Navigation.swift in Sources */,
 				FCF235292712F48100E717D5 /* ScheduleGroup.swift in Sources */,
 				FCF235252712EEC600E717D5 /* FacultyGroupsVM.swift in Sources */,
 				FCF235372713178800E717D5 /* Event.swift in Sources */,
+				FCF2353A2713292700E717D5 /* EventList.swift in Sources */,
 				FCF235182712CE7B00E717D5 /* APIService.swift in Sources */,
 				FCF2351B2712DAA400E717D5 /* Array+Ext.swift in Sources */,
 				FCF2351E2712DB9C00E717D5 /* ExtendedNavigationView.swift in Sources */,
+				FCF2353E27132FF700E717D5 /* CalendarService.swift in Sources */,
 				FCF235232712EEB300E717D5 /* FacultyGroupsView.swift in Sources */,
 				FCF2352F2712F7BA00E717D5 /* LoadingIndicator.swift in Sources */,
 				FCF235132712CA0F00E717D5 /* FacultiesVM.swift in Sources */,

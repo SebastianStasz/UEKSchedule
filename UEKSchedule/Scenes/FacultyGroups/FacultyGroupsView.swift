@@ -18,10 +18,12 @@ struct FacultyGroupsView: View {
 
     var body: some View {
         List {
-            ForEach(viewModel.facultyGroups) {
-                NavigationLink($0.name, destination: ScheduleView(facultyGroup: $0))
+            ForEach(viewModel.facultyGroups) { facultyGroup in
+                NavigationLink(facultyGroup.name) {}
+                    .onNavigation { viewModel.scheduleVM = .init(facultyGroup: facultyGroup) }
             }
             .navigationTitle(faculty.name)
+            .navigation(item: $viewModel.scheduleVM) { ScheduleView(viewModel: $0) }
         }
         .searchable(text: $viewModel.search)
         .onAppear { viewModel.faculty = faculty }

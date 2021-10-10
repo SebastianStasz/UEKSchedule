@@ -14,3 +14,7 @@ struct Event {
     let place: String
     let term: Date
 }
+
+extension Event: Identifiable, Hashable {
+    var id: Int { self.hashValue }
+}
