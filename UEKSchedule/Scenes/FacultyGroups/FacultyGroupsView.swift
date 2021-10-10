@@ -19,7 +19,7 @@ struct FacultyGroupsView: View {
     var body: some View {
         List {
             ForEach(viewModel.facultyGroups) {
-                NavigationLink($0.name) {}
+                NavigationLink($0.name, destination: ScheduleView(facultyGroup: $0))
             }
             .navigationTitle(faculty.name)
         }
