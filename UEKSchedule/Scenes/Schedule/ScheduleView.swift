@@ -25,7 +25,7 @@ struct ScheduleView: View {
             Spacer()
 
             if viewModel.calendarExists {
-                Button("Update calendar") {}
+                Button("Update calendar") { viewModel.updateCalendar() }
                 Text("Calendar for this schedule already exists")
             } else {
                 Button("Create calendar") { viewModel.createCalendar() }

@@ -29,7 +29,11 @@ final class ScheduleVM: ObservableObject {
     }
 
     func createCalendar() {
-        calendarService.createCalendar()
+        calendarService.createCalendar(with: events)
+    }
+
+    func updateCalendar() {
+        calendarService.updateCalendar(with: events)
     }
 
     func checkCalendarAccess() async {
@@ -72,13 +76,13 @@ final class ScheduleVM: ObservableObject {
         do {
             let columns = try row.select("td").array()
             guard columns.count == 6 else { return nil }
-//            let term = try columns[0].text()
-//            let time = try columns[1].text()
+            let term = try columns[0].text()
+            let time = try columns[1].text()
             let name = try columns[2].text()
             let type = try columns[3].text()
             let leader = try columns[4].text()
             let place = try columns[5].text()
-            return Event(name: name, type: type, leader: leader, place: place, term: Date())
+            return Event(name: name, type: type, leader: leader, place: place, term: term, time: time)
         } catch {
             return nil
         }
