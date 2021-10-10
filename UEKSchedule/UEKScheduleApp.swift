@@ -11,7 +11,7 @@ import SwiftUI
 struct UEKScheduleApp: App {
     var body: some Scene {
         WindowGroup {
-            DashboardView()
+            FacultiesView()
         }
     }
 }
