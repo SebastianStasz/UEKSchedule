@@ -32,6 +32,9 @@
 		FCF235462713527800E717D5 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235452713527800E717D5 /* SFSymbol.swift */; };
 		FCF235492713531200E717D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235482713531200E717D5 /* SettingsView.swift */; };
 		FCF2354B2713536400E717D5 /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2354A2713536400E717D5 /* Button+Ext.swift */; };
+		FCF2354D2713551A00E717D5 /* FacultiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2354C2713551A00E717D5 /* FacultiesService.swift */; };
+		FCF2354F2713560E00E717D5 /* FacultyGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2354E2713560E00E717D5 /* FacultyGroupsService.swift */; };
+		FCF235512713575C00E717D5 /* ScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235502713575C00E717D5 /* ScheduleService.swift */; };
 		FCF408CF2711DDF900F24340 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = FCF408CE2711DDF900F24340 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 		FCF235452713527800E717D5 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		FCF235482713531200E717D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FCF2354A2713536400E717D5 /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
+		FCF2354C2713551A00E717D5 /* FacultiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultiesService.swift; sourceTree = "<group>"; };
+		FCF2354E2713560E00E717D5 /* FacultyGroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyGroupsService.swift; sourceTree = "<group>"; };
+		FCF235502713575C00E717D5 /* ScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,7 @@
 			children = (
 				FCF235102712C9D200E717D5 /* FacultiesView.swift */,
 				FCF235122712CA0F00E717D5 /* FacultiesVM.swift */,
+				FCF2354C2713551A00E717D5 /* FacultiesService.swift */,
 			);
 			path = FacultiesList;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 			children = (
 				FCF235222712EEB300E717D5 /* FacultyGroupsView.swift */,
 				FCF235242712EEC600E717D5 /* FacultyGroupsVM.swift */,
+				FCF2354E2713560E00E717D5 /* FacultyGroupsService.swift */,
 			);
 			path = FacultyGroups;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 			children = (
 				FCF2353127130BC300E717D5 /* ScheduleView.swift */,
 				FCF2353327130C1100E717D5 /* ScheduleVM.swift */,
+				FCF235502713575C00E717D5 /* ScheduleService.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -294,12 +303,15 @@
 				FCEF432F270E37DD0073E566 /* UEKScheduleApp.swift in Sources */,
 				FCF235462713527800E717D5 /* SFSymbol.swift in Sources */,
 				FCF2352B2712F67800E717D5 /* Publisher+Ext.swift in Sources */,
+				FCF2354F2713560E00E717D5 /* FacultyGroupsService.swift in Sources */,
 				FCF2353227130BC300E717D5 /* ScheduleView.swift in Sources */,
+				FCF235512713575C00E717D5 /* ScheduleService.swift in Sources */,
 				FCF2353427130C1100E717D5 /* ScheduleVM.swift in Sources */,
 				FCF2354027133A3400E717D5 /* View+Navigation.swift in Sources */,
 				FCF235292712F48100E717D5 /* ScheduleGroup.swift in Sources */,
 				FCF235252712EEC600E717D5 /* FacultyGroupsVM.swift in Sources */,
 				FCF235372713178800E717D5 /* Event.swift in Sources */,
+				FCF2354D2713551A00E717D5 /* FacultiesService.swift in Sources */,
 				FCF2353A2713292700E717D5 /* EventList.swift in Sources */,
 				FCF235182712CE7B00E717D5 /* APIService.swift in Sources */,
 				FCF235422713483300E717D5 /* DateService.swift in Sources */,

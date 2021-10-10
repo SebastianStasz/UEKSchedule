@@ -8,7 +8,7 @@
 import EventKit
 import Foundation
 
-final class CalendarService: ObservableObject {
+final class CalendarService {
     private let eventStore = EKEventStore()
     private let facultyGroup: ScheduleGroup
     private let calendarSource: EKSource?
