@@ -11,8 +11,8 @@ import SwiftSoup
 
 final class FacultiesVM: ObservableObject {
 
-    @Published private var allFaculties: [Faculty] = []
-    @Published private(set) var faculties: [Faculty] = []
+    @Published private var allFaculties: [ScheduleGroup] = []
+    @Published private(set) var faculties: [ScheduleGroup] = []
     @Published private(set) var isLoading = true
     @Published var search = ""
 
@@ -44,17 +44,10 @@ final class FacultiesVM: ObservableObject {
         }
     }
 
-    private func parseFaculties(from content: Document) -> [Faculty] {
+    private func parseFaculties(from content: Document) -> [ScheduleGroup] {
         guard let groups = try? content.getElementsByClass("kategorie").array().second,
               let faculties = try? groups.select("a").array()
         else { return [] }
-        return faculties.compactMap { getFaculty(from: $0) }
-    }
-
-    private func getFaculty(from element: Element) -> Faculty? {
-        guard let link = try? element.attr("href"),
-              let name = try? element.text()
-        else { return nil }
-        return Faculty(name: name, url: link)
+        return faculties.compactMap { ScheduleGroup.create(from: $0) }
     }
 }

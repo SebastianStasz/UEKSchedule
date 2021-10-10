@@ -13,11 +13,15 @@
 		FCEF4336270E37E10073E566 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCEF4335270E37E10073E566 /* Preview Assets.xcassets */; };
 		FCF235112712C9D200E717D5 /* FacultiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235102712C9D200E717D5 /* FacultiesView.swift */; };
 		FCF235132712CA0F00E717D5 /* FacultiesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235122712CA0F00E717D5 /* FacultiesVM.swift */; };
-		FCF235152712CA8600E717D5 /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235142712CA8600E717D5 /* Faculty.swift */; };
 		FCF235182712CE7B00E717D5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235172712CE7B00E717D5 /* APIService.swift */; };
 		FCF2351B2712DAA400E717D5 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2351A2712DAA400E717D5 /* Array+Ext.swift */; };
 		FCF2351E2712DB9C00E717D5 /* ExtendedNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2351D2712DB9C00E717D5 /* ExtendedNavigationView.swift */; };
 		FCF235202712DDBF00E717D5 /* DisplayIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2351F2712DDBF00E717D5 /* DisplayIf.swift */; };
+		FCF235232712EEB300E717D5 /* FacultyGroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235222712EEB300E717D5 /* FacultyGroupsView.swift */; };
+		FCF235252712EEC600E717D5 /* FacultyGroupsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235242712EEC600E717D5 /* FacultyGroupsVM.swift */; };
+		FCF235292712F48100E717D5 /* ScheduleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235282712F48100E717D5 /* ScheduleGroup.swift */; };
+		FCF2352B2712F67800E717D5 /* Publisher+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2352A2712F67800E717D5 /* Publisher+Ext.swift */; };
+		FCF2352F2712F7BA00E717D5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2352E2712F7BA00E717D5 /* LoadingIndicator.swift */; };
 		FCF408CF2711DDF900F24340 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = FCF408CE2711DDF900F24340 /* SwiftSoup */; };
 		FCF408D1271201EE00F24340 /* ScheduleScrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF408D0271201EE00F24340 /* ScheduleScrapper.swift */; };
 		FCF408D3271202EB00F24340 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF408D2271202EB00F24340 /* AppError.swift */; };
@@ -32,11 +36,15 @@
 		FCEF433E270E3A5D0073E566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FCF235102712C9D200E717D5 /* FacultiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultiesView.swift; sourceTree = "<group>"; };
 		FCF235122712CA0F00E717D5 /* FacultiesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultiesVM.swift; sourceTree = "<group>"; };
-		FCF235142712CA8600E717D5 /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
 		FCF235172712CE7B00E717D5 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		FCF2351A2712DAA400E717D5 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		FCF2351D2712DB9C00E717D5 /* ExtendedNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedNavigationView.swift; sourceTree = "<group>"; };
 		FCF2351F2712DDBF00E717D5 /* DisplayIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayIf.swift; sourceTree = "<group>"; };
+		FCF235222712EEB300E717D5 /* FacultyGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyGroupsView.swift; sourceTree = "<group>"; };
+		FCF235242712EEC600E717D5 /* FacultyGroupsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyGroupsVM.swift; sourceTree = "<group>"; };
+		FCF235282712F48100E717D5 /* ScheduleGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleGroup.swift; sourceTree = "<group>"; };
+		FCF2352A2712F67800E717D5 /* Publisher+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Ext.swift"; sourceTree = "<group>"; };
+		FCF2352E2712F7BA00E717D5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		FCF408D0271201EE00F24340 /* ScheduleScrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScrapper.swift; sourceTree = "<group>"; };
 		FCF408D2271202EB00F24340 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,13 +82,15 @@
 			children = (
 				FCEF433E270E3A5D0073E566 /* Info.plist */,
 				FCEF432E270E37DD0073E566 /* UEKScheduleApp.swift */,
+				FCF408D2271202EB00F24340 /* AppError.swift */,
 				FCEF4330270E37DD0073E566 /* DashboardView.swift */,
+				FCF2352D2712F7AA00E717D5 /* Views */,
 				FCF2351C2712DB6700E717D5 /* ViewModifiers */,
 				FCF235192712DA9700E717D5 /* Extensions */,
 				FCF408D0271201EE00F24340 /* ScheduleScrapper.swift */,
 				FCF235172712CE7B00E717D5 /* APIService.swift */,
-				FCF235162712CAA800E717D5 /* FacultiesList */,
-				FCF408D2271202EB00F24340 /* AppError.swift */,
+				FCF235282712F48100E717D5 /* ScheduleGroup.swift */,
+				FCF2352C2712F79D00E717D5 /* Scenes */,
 				FCEF4332270E37E10073E566 /* Assets.xcassets */,
 				FCEF4334270E37E10073E566 /* Preview Content */,
 			);
@@ -99,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				FCF235102712C9D200E717D5 /* FacultiesView.swift */,
-				FCF235142712CA8600E717D5 /* Faculty.swift */,
 				FCF235122712CA0F00E717D5 /* FacultiesVM.swift */,
 			);
 			path = FacultiesList;
@@ -109,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF2351A2712DAA400E717D5 /* Array+Ext.swift */,
+				FCF2352A2712F67800E717D5 /* Publisher+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -120,6 +130,32 @@
 				FCF2351F2712DDBF00E717D5 /* DisplayIf.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		FCF235212712EE9400E717D5 /* FacultyGroups */ = {
+			isa = PBXGroup;
+			children = (
+				FCF235222712EEB300E717D5 /* FacultyGroupsView.swift */,
+				FCF235242712EEC600E717D5 /* FacultyGroupsVM.swift */,
+			);
+			path = FacultyGroups;
+			sourceTree = "<group>";
+		};
+		FCF2352C2712F79D00E717D5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FCF235212712EE9400E717D5 /* FacultyGroups */,
+				FCF235162712CAA800E717D5 /* FacultiesList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		FCF2352D2712F7AA00E717D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCF2352E2712F7BA00E717D5 /* LoadingIndicator.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,15 +234,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCF235152712CA8600E717D5 /* Faculty.swift in Sources */,
 				FCF408D3271202EB00F24340 /* AppError.swift in Sources */,
 				FCF235202712DDBF00E717D5 /* DisplayIf.swift in Sources */,
 				FCEF4331270E37DD0073E566 /* DashboardView.swift in Sources */,
 				FCEF432F270E37DD0073E566 /* UEKScheduleApp.swift in Sources */,
+				FCF2352B2712F67800E717D5 /* Publisher+Ext.swift in Sources */,
+				FCF235292712F48100E717D5 /* ScheduleGroup.swift in Sources */,
+				FCF235252712EEC600E717D5 /* FacultyGroupsVM.swift in Sources */,
 				FCF408D1271201EE00F24340 /* ScheduleScrapper.swift in Sources */,
 				FCF235182712CE7B00E717D5 /* APIService.swift in Sources */,
 				FCF2351B2712DAA400E717D5 /* Array+Ext.swift in Sources */,
 				FCF2351E2712DB9C00E717D5 /* ExtendedNavigationView.swift in Sources */,
+				FCF235232712EEB300E717D5 /* FacultyGroupsView.swift in Sources */,
+				FCF2352F2712F7BA00E717D5 /* LoadingIndicator.swift in Sources */,
 				FCF235132712CA0F00E717D5 /* FacultiesVM.swift in Sources */,
 				FCF235112712C9D200E717D5 /* FacultiesView.swift in Sources */,
 			);

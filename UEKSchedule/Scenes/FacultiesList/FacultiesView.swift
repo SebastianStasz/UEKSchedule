@@ -14,21 +14,14 @@ struct FacultiesView: View {
     var body: some View {
         List {
             ForEach(viewModel.faculties) {
-                NavigationLink($0.name) {
-//                    Text($0.name)
-                }
+                NavigationLink($0.name, destination: FacultyGroupsView(faculty: $0))
             }
         }
-        .overlay(activityIndicator)
+        .overlay(LoadingIndicator(displayIf: viewModel.isLoading))
         .embedInNavigationView(title: "Faculties")
         .searchable(text: $viewModel.search)
         .refreshable { await viewModel.loadFaculties() }
         .task { await viewModel.loadFaculties() }
-    }
-
-    private var activityIndicator: some View {
-        ProgressView().displayIf(viewModel.isLoading)
-        
     }
 }
 

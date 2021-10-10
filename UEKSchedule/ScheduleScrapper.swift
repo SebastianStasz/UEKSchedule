@@ -34,7 +34,7 @@ final class ScheduleScrapper: ObservableObject {
                 print("Parsing rows error") ; return
             }
 
-            let events = try rows.map { getEvent(from: $0) }
+            let events = rows.map { getEvent(from: $0) }
 
             print(events)
         } catch {
