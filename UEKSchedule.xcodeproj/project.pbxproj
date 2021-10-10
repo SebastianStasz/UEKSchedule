@@ -28,6 +28,10 @@
 		FCF2353E27132FF700E717D5 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2353D27132FF700E717D5 /* CalendarService.swift */; };
 		FCF2354027133A3400E717D5 /* View+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2353F27133A3400E717D5 /* View+Navigation.swift */; };
 		FCF235422713483300E717D5 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235412713483300E717D5 /* DateService.swift */; };
+		FCF235442713521C00E717D5 /* ToolbarItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235432713521C00E717D5 /* ToolbarItem+Ext.swift */; };
+		FCF235462713527800E717D5 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235452713527800E717D5 /* SFSymbol.swift */; };
+		FCF235492713531200E717D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235482713531200E717D5 /* SettingsView.swift */; };
+		FCF2354B2713536400E717D5 /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2354A2713536400E717D5 /* Button+Ext.swift */; };
 		FCF408CF2711DDF900F24340 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = FCF408CE2711DDF900F24340 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +59,10 @@
 		FCF2353D27132FF700E717D5 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		FCF2353F27133A3400E717D5 /* View+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Navigation.swift"; sourceTree = "<group>"; };
 		FCF235412713483300E717D5 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
+		FCF235432713521C00E717D5 /* ToolbarItem+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarItem+Ext.swift"; sourceTree = "<group>"; };
+		FCF235452713527800E717D5 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
+		FCF235482713531200E717D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FCF2354A2713536400E717D5 /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,7 @@
 				FCF2353D27132FF700E717D5 /* CalendarService.swift */,
 				FCF235172712CE7B00E717D5 /* APIService.swift */,
 				FCF235412713483300E717D5 /* DateService.swift */,
+				FCF235452713527800E717D5 /* SFSymbol.swift */,
 				FCF2352D2712F7AA00E717D5 /* Views */,
 				FCF2351C2712DB6700E717D5 /* ViewModifiers */,
 				FCF235192712DA9700E717D5 /* Extensions */,
@@ -127,6 +136,8 @@
 				FCF2351A2712DAA400E717D5 /* Array+Ext.swift */,
 				FCF2352A2712F67800E717D5 /* Publisher+Ext.swift */,
 				FCF2353F27133A3400E717D5 /* View+Navigation.swift */,
+				FCF2354A2713536400E717D5 /* Button+Ext.swift */,
+				FCF235432713521C00E717D5 /* ToolbarItem+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,6 +163,7 @@
 		FCF2352C2712F79D00E717D5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				FCF235472713530600E717D5 /* Settings */,
 				FCF2353027130BB000E717D5 /* Schedule */,
 				FCF235212712EE9400E717D5 /* FacultyGroups */,
 				FCF235162712CAA800E717D5 /* FacultiesList */,
@@ -192,6 +204,14 @@
 				FCEF4332270E37E10073E566 /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FCF235472713530600E717D5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FCF235482713531200E717D5 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +292,7 @@
 			files = (
 				FCF235202712DDBF00E717D5 /* DisplayIf.swift in Sources */,
 				FCEF432F270E37DD0073E566 /* UEKScheduleApp.swift in Sources */,
+				FCF235462713527800E717D5 /* SFSymbol.swift in Sources */,
 				FCF2352B2712F67800E717D5 /* Publisher+Ext.swift in Sources */,
 				FCF2353227130BC300E717D5 /* ScheduleView.swift in Sources */,
 				FCF2353427130C1100E717D5 /* ScheduleVM.swift in Sources */,
@@ -285,10 +306,13 @@
 				FCF2351B2712DAA400E717D5 /* Array+Ext.swift in Sources */,
 				FCF2351E2712DB9C00E717D5 /* ExtendedNavigationView.swift in Sources */,
 				FCF2353E27132FF700E717D5 /* CalendarService.swift in Sources */,
+				FCF2354B2713536400E717D5 /* Button+Ext.swift in Sources */,
 				FCF235232712EEB300E717D5 /* FacultyGroupsView.swift in Sources */,
 				FCF2352F2712F7BA00E717D5 /* LoadingIndicator.swift in Sources */,
 				FCF235132712CA0F00E717D5 /* FacultiesVM.swift in Sources */,
+				FCF235442713521C00E717D5 /* ToolbarItem+Ext.swift in Sources */,
 				FCF235112712C9D200E717D5 /* FacultiesView.swift in Sources */,
+				FCF235492713531200E717D5 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
