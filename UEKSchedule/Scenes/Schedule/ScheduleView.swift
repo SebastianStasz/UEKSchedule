@@ -9,34 +9,48 @@ import SwiftUI
 
 struct ScheduleView: View {
 
-    @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: ScheduleVM
+    @State private var isEventListPresented = false
 
     var body: some View {
-        VStack {
+        Form {
             Text(viewModel.facultyGroup.name)
 
-            Spacer()
-
-            Text("Founded: \(viewModel.events.count) events")
-            NavigationLink("Show all", destination: EventList(title: viewModel.facultyGroup.name, events: viewModel.events))
-                .displayIf(viewModel.events.isNotEmpty)
-
-            Spacer()
-
-            if viewModel.calendarExists {
-                Button("Update calendar") { viewModel.updateCalendar() }
-                Text("Calendar for this schedule already exists")
-            } else {
-                Button("Create calendar") { viewModel.createCalendar() }
+            Section {
+                Text(String.schedule_foundedEvents(count: viewModel.events.count)).textBodyThin
+                Button(.common_showAll, action: presentEventList)
+                    .displayIf(viewModel.events.isNotEmpty)
             }
 
-            Spacer()
+            Section {
+                if viewModel.calendarExists {
+                    Text(String.schedule_calendarExists).textBodyThin
+                    Button(.schedule_updateCalendar, action: updateCalendar)
+                } else {
+                    Button(.schedule_createCalendar, action: createCalendar)
+                }
+            }
         }
-        .task { await viewModel.checkCalendarAccess() }
-        .alert("Calendar access denied", isPresented: $viewModel.noCalendarAccessPopup) {
-            Button("OK") { dismiss() }
+        .navigationBarTitleDisplayMode(.inline)
+        .buttonStyle(TextButtonStyle())
+        .alert(item: $viewModel.navigator.alert) { $0.body }
+        .navigation(isActive: $isEventListPresented) {
+            EventList(title: viewModel.facultyGroup.name, events: viewModel.events)
         }
+    }
+
+    // MARK: - Interactions
+
+    private func updateCalendar() {
+        viewModel.input.updateCalendar.send()
+    }
+
+    private func createCalendar() {
+        viewModel.input.createCalendar.send()
+    }
+
+    private func presentEventList() {
+        isEventListPresented = true
     }
 }
 

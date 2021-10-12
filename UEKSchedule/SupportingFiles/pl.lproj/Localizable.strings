@@ -1,0 +1,17 @@
+//
+//  Localizable.strings
+//  UEKSchedule
+//
+//  Created by Sebastian Staszczyk on 12/10/2021.
+//
+
+"common_ok" = "OK";
+"common_faculties" = "Fakultety";
+"common_showAll" = "Pokaż wszystko";
+
+"faculties_empty" = "Nie udało się załadować fakultetów. Spróbuj ponownie później.";
+
+"schedule_createCalendar" = "Utworz kalendarz";
+"schedule_updateCalendar" = "Zaktualizuj kalendarz";
+"schedule_foundedEvents" = "Znaleziono %d wydarzeń";
+"schedule_calendarExists" = "Kalendarz dla tego planu zajęć już istnieje";

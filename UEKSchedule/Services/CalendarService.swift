@@ -9,19 +9,16 @@ import EventKit
 import Foundation
 
 final class CalendarService {
-    private let eventStore = EKEventStore()
+    private var eventStore = EKEventStore()
     private let facultyGroup: ScheduleGroup
-    private let calendarSource: EKSource?
+    private var calendarSource: EKSource?
 
     @Published private(set) var calendar: EKCalendar?
-    @Published private(set) var calendars: [EKCalendar] = []
+    @Published private var calendars: [EKCalendar] = []
 
     init(facultyGroup: ScheduleGroup) {
         self.facultyGroup = facultyGroup
-
-        let basic = eventStore.defaultCalendarForNewEvents?.source
-        let local = eventStore.sources.first(where: { $0.sourceType == .local })
-        calendarSource = basic ?? local
+        setCalendarSource()
 
         $calendars
             .map { [weak self] _ -> EKCalendar? in
@@ -45,13 +42,20 @@ final class CalendarService {
 
     private func requestAccessToCalendar() async -> Bool {
         _ = try? await eventStore.requestAccess(to: .event)
+        setCalendarSource()
         return await checkCalendarAccess()
     }
 
-    func createCalendar(with events: [Event]) {
+    private func setCalendarSource() {
+        eventStore = .init()
+        let basic = eventStore.defaultCalendarForNewEvents?.source
+        let local = eventStore.sources.first(where: { $0.sourceType == .local })
+        calendarSource = basic ?? local
+    }
+
+    func createCalendar(with events: [Event]) -> AppError? {
         guard let source = calendarSource else {
-            print("Failed to get calendar source")
-            return
+            return .getCalendarSource
         }
         let calendar = EKCalendar(for: .event, eventStore: eventStore)
         calendar.title = facultyGroup.name
@@ -61,37 +65,40 @@ final class CalendarService {
             try eventStore.saveCalendar(calendar, commit: true)
             UserDefaults.standard.set(calendar.calendarIdentifier, forKey: facultyGroup.url)
             loadCalendars()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                self?.createEvents(events: events)
-            }
+            createEvents(events: events, in: calendar)
+            return nil
         } catch {
-            print("Failed to create calendar")
+            return .createCalendar
         }
     }
 
-    func updateCalendar(with events: [Event]) {
-        deleteEvents()
-        createEvents(events: events)
+    func updateCalendar(with events: [Event]) -> AppError? {
+        guard let calendar = calendar else {
+            return .updateCalendar
+        }
+        deleteEvents(in: calendar)
+        createEvents(events: events, in: calendar)
+        return nil
     }
 
-    private func createEvents(events: [Event]) {
+    private func createEvents(events: [Event], in calendar: EKCalendar) {
         for event in events {
-            createEvent(from: event)
+            createEvent(from: event, in: calendar)
         }
     }
 
-    private func deleteEvents() {
+    private func deleteEvents(in calendar: EKCalendar) {
         let date = Date()
         let startDate = Calendar.current.date(byAdding: .year, value: -1, to: date)!
         let endDate = Calendar.current.date(byAdding: .year, value: 1, to: date)!
-        let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendar!])
+        let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendar])
         let events = eventStore.events(matching: predicate)
         for event in events {
             try? eventStore.remove(event, span: .thisEvent)
         }
     }
 
-    private func createEvent(from eventData: Event) {
+    private func createEvent(from eventData: Event, in calendar: EKCalendar) {
         guard let startDate = eventData.startDate,
               let endDate = eventData.endDate
         else { return }
@@ -103,7 +110,7 @@ final class CalendarService {
         event.startDate = startDate
         event.endDate = endDate
         do {
-            try eventStore.save(event, span: .thisEvent)
+            try eventStore.save(event, span: .futureEvents)
         } catch {
             print("Failed to create event \(eventData.name)")
             print(error)

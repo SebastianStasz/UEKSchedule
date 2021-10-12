@@ -1,0 +1,17 @@
+//
+//  Localizable.strings
+//  UEKSchedule
+//
+//  Created by Sebastian Staszczyk on 12/10/2021.
+//
+
+"common_ok" = "OK";
+"common_faculties" = "Faculties";
+"common_showAll" = "Show all";
+
+"faculties_empty" = "Could not load faculties. Please try again later.";
+
+"schedule_createCalendar" = "Create calendar";
+"schedule_updateCalendar" = "Update calendar";
+"schedule_foundedEvents" = "Founded %d events";
+"schedule_calendarExists" = "Calendar for this schedule already exists";

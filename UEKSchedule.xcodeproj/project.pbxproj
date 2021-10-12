@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FCDA3B2B271559F900BBF08D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCDA3B2D271559F900BBF08D /* Localizable.strings */; };
+		FCDA3B3227155B8500BBF08D /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA3B3127155B8500BBF08D /* Language.swift */; };
+		FCDA3B342715704A00BBF08D /* ScheduleNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA3B332715704A00BBF08D /* ScheduleNavigator.swift */; };
+		FCDA3B362715756D00BBF08D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA3B352715756D00BBF08D /* AppError.swift */; };
+		FCDA3B3827157C6500BBF08D /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA3B3727157C6500BBF08D /* Typography.swift */; };
+		FCDA3B3B27157DA900BBF08D /* TextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA3B3A27157DA900BBF08D /* TextButtonStyle.swift */; };
 		FCEF432F270E37DD0073E566 /* UEKScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF432E270E37DD0073E566 /* UEKScheduleApp.swift */; };
 		FCEF4333270E37E10073E566 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCEF4332270E37E10073E566 /* Assets.xcassets */; };
 		FCEF4336270E37E10073E566 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCEF4335270E37E10073E566 /* Preview Assets.xcassets */; };
@@ -30,7 +36,7 @@
 		FCF235422713483300E717D5 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235412713483300E717D5 /* DateService.swift */; };
 		FCF235442713521C00E717D5 /* ToolbarItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235432713521C00E717D5 /* ToolbarItem+Ext.swift */; };
 		FCF235462713527800E717D5 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235452713527800E717D5 /* SFSymbol.swift */; };
-		FCF235492713531200E717D5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235482713531200E717D5 /* SettingsView.swift */; };
+		FCF235492713531200E717D5 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF235482713531200E717D5 /* AboutView.swift */; };
 		FCF2354B2713536400E717D5 /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2354A2713536400E717D5 /* Button+Ext.swift */; };
 		FCF2354D2713551A00E717D5 /* FacultiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2354C2713551A00E717D5 /* FacultiesService.swift */; };
 		FCF2354F2713560E00E717D5 /* FacultyGroupsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2354E2713560E00E717D5 /* FacultyGroupsService.swift */; };
@@ -39,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FCDA3B2C271559F900BBF08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FCDA3B2E27155AE500BBF08D /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FCDA3B3127155B8500BBF08D /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		FCDA3B332715704A00BBF08D /* ScheduleNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNavigator.swift; sourceTree = "<group>"; };
+		FCDA3B352715756D00BBF08D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		FCDA3B3727157C6500BBF08D /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		FCDA3B3A27157DA900BBF08D /* TextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonStyle.swift; sourceTree = "<group>"; };
 		FCEF432B270E37DD0073E566 /* UEKSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UEKSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEF432E270E37DD0073E566 /* UEKScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UEKScheduleApp.swift; sourceTree = "<group>"; };
 		FCEF4332270E37E10073E566 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,7 +77,7 @@
 		FCF235412713483300E717D5 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		FCF235432713521C00E717D5 /* ToolbarItem+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarItem+Ext.swift"; sourceTree = "<group>"; };
 		FCF235452713527800E717D5 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
-		FCF235482713531200E717D5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FCF235482713531200E717D5 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		FCF2354A2713536400E717D5 /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 		FCF2354C2713551A00E717D5 /* FacultiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultiesService.swift; sourceTree = "<group>"; };
 		FCF2354E2713560E00E717D5 /* FacultyGroupsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyGroupsService.swift; sourceTree = "<group>"; };
@@ -83,6 +96,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FCDA3B2F27155B2F00BBF08D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FCF235452713527800E717D5 /* SFSymbol.swift */,
+				FCDA3B3127155B8500BBF08D /* Language.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FCDA3B3027155B6400BBF08D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FCF235172712CE7B00E717D5 /* APIService.swift */,
+				FCF2353D27132FF700E717D5 /* CalendarService.swift */,
+				FCF235412713483300E717D5 /* DateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FCDA3B3927157D7E00BBF08D /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				FCDA3B3727157C6500BBF08D /* Typography.swift */,
+				FCDA3B3A27157DA900BBF08D /* TextButtonStyle.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
 		FCEF4322270E37DD0073E566 = {
 			isa = PBXGroup;
 			children = (
@@ -104,10 +145,9 @@
 			children = (
 				FCEF433E270E3A5D0073E566 /* Info.plist */,
 				FCEF432E270E37DD0073E566 /* UEKScheduleApp.swift */,
-				FCF2353D27132FF700E717D5 /* CalendarService.swift */,
-				FCF235172712CE7B00E717D5 /* APIService.swift */,
-				FCF235412713483300E717D5 /* DateService.swift */,
-				FCF235452713527800E717D5 /* SFSymbol.swift */,
+				FCDA3B3927157D7E00BBF08D /* Design */,
+				FCDA3B3027155B6400BBF08D /* Services */,
+				FCDA3B2F27155B2F00BBF08D /* Helpers */,
 				FCF2352D2712F7AA00E717D5 /* Views */,
 				FCF2351C2712DB6700E717D5 /* ViewModifiers */,
 				FCF235192712DA9700E717D5 /* Extensions */,
@@ -171,7 +211,7 @@
 		FCF2352C2712F79D00E717D5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				FCF235472713530600E717D5 /* Settings */,
+				FCF235472713530600E717D5 /* About */,
 				FCF2353027130BB000E717D5 /* Schedule */,
 				FCF235212712EE9400E717D5 /* FacultyGroups */,
 				FCF235162712CAA800E717D5 /* FacultiesList */,
@@ -192,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF2353127130BC300E717D5 /* ScheduleView.swift */,
+				FCDA3B332715704A00BBF08D /* ScheduleNavigator.swift */,
 				FCF2353327130C1100E717D5 /* ScheduleVM.swift */,
 				FCF235502713575C00E717D5 /* ScheduleService.swift */,
 			);
@@ -203,6 +244,7 @@
 			children = (
 				FCF235282712F48100E717D5 /* ScheduleGroup.swift */,
 				FCF235362713178800E717D5 /* Event.swift */,
+				FCDA3B352715756D00BBF08D /* AppError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,16 +253,17 @@
 			isa = PBXGroup;
 			children = (
 				FCEF4332270E37E10073E566 /* Assets.xcassets */,
+				FCDA3B2D271559F900BBF08D /* Localizable.strings */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		FCF235472713530600E717D5 /* Settings */ = {
+		FCF235472713530600E717D5 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				FCF235482713531200E717D5 /* SettingsView.swift */,
+				FCF235482713531200E717D5 /* AboutView.swift */,
 			);
-			path = Settings;
+			path = About;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +311,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = FCEF4322270E37DD0073E566;
 			packageReferences = (
@@ -288,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCEF4336270E37E10073E566 /* Preview Assets.xcassets in Resources */,
+				FCDA3B2B271559F900BBF08D /* Localizable.strings in Resources */,
 				FCEF4333270E37E10073E566 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,9 +350,12 @@
 				FCF2352B2712F67800E717D5 /* Publisher+Ext.swift in Sources */,
 				FCF2354F2713560E00E717D5 /* FacultyGroupsService.swift in Sources */,
 				FCF2353227130BC300E717D5 /* ScheduleView.swift in Sources */,
+				FCDA3B342715704A00BBF08D /* ScheduleNavigator.swift in Sources */,
 				FCF235512713575C00E717D5 /* ScheduleService.swift in Sources */,
 				FCF2353427130C1100E717D5 /* ScheduleVM.swift in Sources */,
 				FCF2354027133A3400E717D5 /* View+Navigation.swift in Sources */,
+				FCDA3B3827157C6500BBF08D /* Typography.swift in Sources */,
+				FCDA3B3B27157DA900BBF08D /* TextButtonStyle.swift in Sources */,
 				FCF235292712F48100E717D5 /* ScheduleGroup.swift in Sources */,
 				FCF235252712EEC600E717D5 /* FacultyGroupsVM.swift in Sources */,
 				FCF235372713178800E717D5 /* Event.swift in Sources */,
@@ -320,21 +368,36 @@
 				FCF2353E27132FF700E717D5 /* CalendarService.swift in Sources */,
 				FCF2354B2713536400E717D5 /* Button+Ext.swift in Sources */,
 				FCF235232712EEB300E717D5 /* FacultyGroupsView.swift in Sources */,
+				FCDA3B3227155B8500BBF08D /* Language.swift in Sources */,
 				FCF2352F2712F7BA00E717D5 /* LoadingIndicator.swift in Sources */,
 				FCF235132712CA0F00E717D5 /* FacultiesVM.swift in Sources */,
 				FCF235442713521C00E717D5 /* ToolbarItem+Ext.swift in Sources */,
 				FCF235112712C9D200E717D5 /* FacultiesView.swift in Sources */,
-				FCF235492713531200E717D5 /* SettingsView.swift in Sources */,
+				FCDA3B362715756D00BBF08D /* AppError.swift in Sources */,
+				FCF235492713531200E717D5 /* AboutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FCDA3B2D271559F900BBF08D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCDA3B2C271559F900BBF08D /* en */,
+				FCDA3B2E27155AE500BBF08D /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FCEF4337270E37E10073E566 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -396,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

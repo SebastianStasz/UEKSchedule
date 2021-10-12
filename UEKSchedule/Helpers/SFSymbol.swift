@@ -8,7 +8,7 @@
 import Foundation
 
 public enum SFSymbol: String {
-    case settings = "gearshape"
+    case about = "info.circle"
 }
 
 public extension SFSymbol {

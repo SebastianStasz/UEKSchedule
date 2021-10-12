@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  AboutView.swift
 //  UEKSchedule
 //
 //  Created by Sebastian Staszczyk on 10/10/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct AboutView: View {
     var body: some View {
         Text("Hello, World!")
     }
@@ -16,8 +16,8 @@ struct SettingsView: View {
 
 // MARK: - Preview
 
-struct SettingsView_Previews: PreviewProvider {
+struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        AboutView()
     }
 }

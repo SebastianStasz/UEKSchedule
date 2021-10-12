@@ -12,15 +12,23 @@ final class FacultiesVM: ObservableObject {
 
     private let service = FacultiesService()
     let loadFaculties = PassthroughSubject<Void, Never>()
+    let refreshFaculties = PassthroughSubject<Void, Never>()
 
     @Published private(set) var faculties: [ScheduleGroup] = []
     @Published private(set) var isLoading = true
     @Published var search = ""
 
     init() {
-        let faculties = loadFaculties
+        let refresh = refreshFaculties
             .handleEvents(receiveOutput: { [weak self] in
                 self?.faculties = []
+            })
+
+        let faculties = Publishers.Merge(loadFaculties, refresh)
+            .filter { [weak self] in
+                self?.faculties.isEmpty ?? false
+            }
+            .handleEvents(receiveOutput: { [weak self] in
                 self?.isLoading = true
             })
             .asyncMap { [weak self] in

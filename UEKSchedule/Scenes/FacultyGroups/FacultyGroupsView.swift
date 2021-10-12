@@ -20,7 +20,7 @@ struct FacultyGroupsView: View {
         List {
             ForEach(viewModel.facultyGroups) { facultyGroup in
                 NavigationLink(facultyGroup.name) {}
-                    .onNavigation { viewModel.scheduleVM = .init(facultyGroup: facultyGroup) }
+                .onNavigation { viewModel.scheduleVM = .init(facultyGroup: facultyGroup) }
             }
             .navigationTitle(faculty.name)
             .navigation(item: $viewModel.scheduleVM) { ScheduleView(viewModel: $0) }
