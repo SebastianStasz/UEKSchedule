@@ -19,15 +19,22 @@ struct FacultiesView: View {
         }
         .overlay(LoadingIndicator(displayIf: viewModel.isLoading))
         .overlay(emptyListDisclaimer)
+        .disabled(viewModel.isLoading)
         .searchable(text: $viewModel.search)
         .refreshable { viewModel.refreshFaculties.send() }
         .task { viewModel.loadFaculties.send() }
     }
 
     private var emptyListDisclaimer: some View {
-        Text(String.faculties_empty)
-            .padding(.horizontal, 20)
-            .displayIf(viewModel.faculties.isEmpty && !viewModel.isLoading)
+        Group {
+            if viewModel.search.isEmpty {
+                Text(String.faculties_empty)
+            } else {
+                Text(String.faculties_search_empty)
+            }
+        }
+        .padding(.horizontal, 20)
+        .displayIf(viewModel.faculties.isEmpty && !viewModel.isLoading)
     }
 }
 

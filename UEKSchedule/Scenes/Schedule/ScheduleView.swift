@@ -23,14 +23,18 @@ struct ScheduleView: View {
             }
 
             Section {
-                if viewModel.calendarExists {
+                if viewModel.calendarExists, let date = viewModel.calendarLastUpdate {
                     Text(String.schedule_calendarExists).textBodyThin
+                    Text("Last update: \(date)").textBodyThin
                     Button(.schedule_updateCalendar, action: updateCalendar)
                 } else {
                     Button(.schedule_createCalendar, action: createCalendar)
                 }
             }
+            .displayIf(viewModel.events.isNotEmpty)
         }
+        .overlay(LoadingIndicator(displayIf: viewModel.isLoading))
+        .disabled(viewModel.isLoading)
         .navigationBarTitleDisplayMode(.inline)
         .buttonStyle(TextButtonStyle())
         .alert(item: $viewModel.navigator.alert) { $0.body }

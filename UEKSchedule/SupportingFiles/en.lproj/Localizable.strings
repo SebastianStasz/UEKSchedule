@@ -10,6 +10,7 @@
 "common_showAll" = "Show all";
 
 "faculties_empty" = "Could not load faculties. Please try again later.";
+"faculties_search_empty" = "No faculties were found";
 
 "schedule_createCalendar" = "Create calendar";
 "schedule_updateCalendar" = "Update calendar";

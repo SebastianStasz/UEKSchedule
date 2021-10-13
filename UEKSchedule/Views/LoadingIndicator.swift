@@ -11,6 +11,10 @@ struct LoadingIndicator: View {
 
     let displayIf: Bool
 
+    init(displayIf: Bool = true) {
+        self.displayIf = displayIf
+    }
+
     var body: some View {
         ProgressView().displayIf(displayIf)
     }

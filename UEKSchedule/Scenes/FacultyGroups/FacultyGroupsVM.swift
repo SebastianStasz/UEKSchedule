@@ -13,6 +13,7 @@ final class FacultyGroupsVM: ObservableObject {
     private let service = FacultyGroupsService()
 
     @Published private(set) var facultyGroups: [ScheduleGroup] = []
+    @Published private(set) var isLoading = true
     @Published var scheduleVM: ScheduleVM?
     @Published var faculty: ScheduleGroup?
     @Published var search = ""
@@ -25,6 +26,9 @@ final class FacultyGroupsVM: ObservableObject {
             }
             .compactMap { $0 }
             .receive(on: DispatchQueue.main)
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.isLoading = false
+            })
 
         Publishers.CombineLatest(facultyGroups, $search)
             .map { facultyGroups, searchText in

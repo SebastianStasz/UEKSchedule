@@ -13,8 +13,8 @@ final class CalendarService {
     private let facultyGroup: ScheduleGroup
     private var calendarSource: EKSource?
 
-    @Published private(set) var calendar: EKCalendar?
     @Published private var calendars: [EKCalendar] = []
+    @Published private(set) var calendar: EKCalendar?
 
     init(facultyGroup: ScheduleGroup) {
         self.facultyGroup = facultyGroup
@@ -22,7 +22,7 @@ final class CalendarService {
 
         $calendars
             .map { [weak self] _ -> EKCalendar? in
-                let calendarId = UserDefaults.standard.string(forKey: facultyGroup.url)
+                let calendarId = UserDefaults.standard.string(forKey: .UD_calendarExists(withUrl: facultyGroup.url))
                 return self?.eventStore.calendars(for: .event).first { $0.calendarIdentifier == calendarId }
             }
             .assign(to: &$calendar)
@@ -40,22 +40,9 @@ final class CalendarService {
         }
     }
 
-    private func requestAccessToCalendar() async -> Bool {
-        _ = try? await eventStore.requestAccess(to: .event)
-        setCalendarSource()
-        return await checkCalendarAccess()
-    }
-
-    private func setCalendarSource() {
-        eventStore = .init()
-        let basic = eventStore.defaultCalendarForNewEvents?.source
-        let local = eventStore.sources.first(where: { $0.sourceType == .local })
-        calendarSource = basic ?? local
-    }
-
     func createCalendar(with events: [Event]) -> AppError? {
         guard let source = calendarSource else {
-            return .getCalendarSource
+            return AppError.getCalendarSource
         }
         let calendar = EKCalendar(for: .event, eventStore: eventStore)
         calendar.title = facultyGroup.name
@@ -63,12 +50,12 @@ final class CalendarService {
 
         do {
             try eventStore.saveCalendar(calendar, commit: true)
-            UserDefaults.standard.set(calendar.calendarIdentifier, forKey: facultyGroup.url)
+            UserDefaults.standard.set(calendar.calendarIdentifier, forKey: .UD_calendarExists(withUrl: facultyGroup.url))
             loadCalendars()
             createEvents(events: events, in: calendar)
             return nil
         } catch {
-            return .createCalendar
+            return AppError.createCalendar
         }
     }
 
@@ -80,8 +67,14 @@ final class CalendarService {
         createEvents(events: events, in: calendar)
         return nil
     }
+}
+
+// MARK: - Private
+
+extension CalendarService {
 
     private func createEvents(events: [Event], in calendar: EKCalendar) {
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url))
         for event in events {
             createEvent(from: event, in: calendar)
         }
@@ -115,6 +108,19 @@ final class CalendarService {
             print("Failed to create event \(eventData.name)")
             print(error)
         }
+    }
+
+    private func requestAccessToCalendar() async -> Bool {
+        _ = try? await eventStore.requestAccess(to: .event)
+        setCalendarSource()
+        return await checkCalendarAccess()
+    }
+
+    private func setCalendarSource() {
+        eventStore = .init()
+        let basic = eventStore.defaultCalendarForNewEvents?.source
+        let local = eventStore.sources.first(where: { $0.sourceType == .local })
+        calendarSource = basic ?? local
     }
 
     private func loadCalendars() {

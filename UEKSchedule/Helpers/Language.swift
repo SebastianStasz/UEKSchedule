@@ -12,6 +12,7 @@ enum Language: String {
     case common_faculties
     case common_showAll
     case faculties_empty
+    case faculties_search_empty
     case schedule_createCalendar
     case schedule_updateCalendar
     case schedule_foundedEvents
@@ -37,6 +38,7 @@ extension String {
     static let common_faculties = Language.common_faculties.text
     static let common_showAll = Language.common_showAll.text
     static let faculties_empty = Language.faculties_empty.text
+    static let faculties_search_empty = Language.faculties_search_empty.text
     static let schedule_createCalendar = Language.schedule_createCalendar.text
     static let schedule_updateCalendar = Language.schedule_updateCalendar.text
     static let schedule_calendarExists = Language.schedule_calendarExists.text

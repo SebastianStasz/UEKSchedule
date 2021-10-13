@@ -22,9 +22,11 @@ struct FacultyGroupsView: View {
                 NavigationLink(facultyGroup.name) {}
                 .onNavigation { viewModel.scheduleVM = .init(facultyGroup: facultyGroup) }
             }
-            .navigationTitle(faculty.name)
-            .navigation(item: $viewModel.scheduleVM) { ScheduleView(viewModel: $0) }
+            .displayIf(!viewModel.isLoading)
         }
+        .navigationTitle(faculty.name)
+        .navigation(item: $viewModel.scheduleVM) { ScheduleView(viewModel: $0) }
+        .overlay(LoadingIndicator(displayIf: viewModel.isLoading))
         .searchable(text: $viewModel.search)
         .onAppear { viewModel.faculty = faculty }
     }

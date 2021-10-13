@@ -26,6 +26,10 @@ final class ScheduleVM: ObservableObject {
     @Published private(set) var isLoading = false
     @Published private(set) var events: [Event] = []
 
+    var calendarLastUpdate: Date? {
+        Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url)))
+    }
+
     init(facultyGroup: ScheduleGroup) {
         self.facultyGroup = facultyGroup
         self.calendarService = .init(facultyGroup: facultyGroup)
@@ -41,7 +45,7 @@ final class ScheduleVM: ObservableObject {
             .asyncMap { [weak self] _ -> ScheduleNavigator.Popup? in
                 guard let self = self,
                       await self.hasCalendarAccess(),
-                      let error = await self.calendarService.createCalendar(with: self.events)
+                      let error = self.calendarService.createCalendar(with: self.events)
                 else { return nil }
                 return .failedToCreateCalendar(error)
             }
@@ -50,14 +54,24 @@ final class ScheduleVM: ObservableObject {
             .asyncMap { [weak self] _ -> ScheduleNavigator.Popup? in
                 guard let self = self,
                       await self.hasCalendarAccess(),
-                      let error = await self.calendarService.updateCalendar(with: self.events)
+                      let error = self.calendarService.updateCalendar(with: self.events)
                 else { return nil }
                 return .failedToUpdateCalendar(error)
             }
 
-        Publishers.Merge(creatingCalendar, updatingCalendar)
-            .compactMap { $0 }
+        Publishers.Merge(input.createCalendar, input.updateCalendar)
             .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.isLoading = true
+            }
+            .store(in: &cancellables)
+
+        Publishers.Merge(creatingCalendar, updatingCalendar)
+            .receive(on: DispatchQueue.main)
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.isLoading = false
+            })
+            .compactMap { $0 }
             .sink { [weak self] in
                 self?.navigator.navigate(to: .aler($0))
             }

@@ -10,6 +10,7 @@
 "common_showAll" = "Pokaż wszystko";
 
 "faculties_empty" = "Nie udało się załadować fakultetów. Spróbuj ponownie później.";
+"faculties_search_empty" = "Nie znaleziono fakultetów z podaną frazą";
 
 "schedule_createCalendar" = "Utworz kalendarz";
 "schedule_updateCalendar" = "Zaktualizuj kalendarz";
