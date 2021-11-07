@@ -144,7 +144,6 @@
 				FCDA3B3027155B6400BBF08D /* Services */,
 				FCDA3B2F27155B2F00BBF08D /* Helpers */,
 				FCF2352D2712F7AA00E717D5 /* Views */,
-				FCF2351C2712DB6700E717D5 /* ViewModifiers */,
 				FCF235192712DA9700E717D5 /* Extensions */,
 				FCF235352713175B00E717D5 /* Models */,
 				FCF2352C2712F79D00E717D5 /* Scenes */,
@@ -179,13 +178,6 @@
 				FCF2353F27133A3400E717D5 /* View+Navigation.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		FCF2351C2712DB6700E717D5 /* ViewModifiers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		FCF235212712EE9400E717D5 /* FacultyGroups */ = {

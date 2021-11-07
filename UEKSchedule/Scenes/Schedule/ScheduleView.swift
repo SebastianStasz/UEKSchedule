@@ -40,7 +40,7 @@ struct ScheduleView: View {
         .buttonStyle(TextButtonStyle())
         .alert(item: $viewModel.navigator.alert) { $0.body }
         .navigation(isActive: $isEventListPresented) {
-            EventList(title: viewModel.facultyGroup.name, events: viewModel.events)
+            EventList(title: viewModel.facultyGroup.name, eventGroups: viewModel.eventGroups)
         }
     }
 
@@ -65,5 +65,6 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleView(viewModel: .init(facultyGroup: .sampleFacultyGroup))
+            .embedInNavigationView(title: "Informatyka Stosowana")
     }
 }

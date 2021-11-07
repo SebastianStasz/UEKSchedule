@@ -42,11 +42,13 @@ struct Event {
     }
 }
 
+// MARK: - Helpers
+
 extension Event: Identifiable, Hashable {
     var id: Int { self.hashValue }
 }
 
-extension String {
+private extension String {
     func index(from: Int) -> Index {
         return self.index(startIndex, offsetBy: from)
     }
@@ -66,4 +68,14 @@ extension String {
         let endIndex = index(from: r.upperBound)
         return String(self[startIndex..<endIndex])
     }
+}
+
+
+// MARK: - Sample Data
+
+extension Event {
+    static let sampleData = [
+        Event(name: "Zarządzanie przedsięwzięciami informatycznymi", type: "wykład", leader: "prof. UEK dr hab. Dariusz Dymek", place: "Paw.C sala A", term: "2021-10-06", time: "Śr 16:45 - 18:15 (2g.)"),
+        Event(name: "Statystyczne biblioteki programistyczne", type: "ćwiczenia do wyboru", leader: "dr Małgorzata Snarska", place: "Paw.A 121 lab. Win10, Office16", term: "2021-10-06", time: "Śr 13:15 - 14:00 (1g.)")
+    ]
 }

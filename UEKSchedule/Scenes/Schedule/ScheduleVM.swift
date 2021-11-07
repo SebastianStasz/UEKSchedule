@@ -25,6 +25,7 @@ final class ScheduleVM: ObservableObject {
     @Published private(set) var calendarExists = false
     @Published private(set) var isLoading = false
     @Published private(set) var events: [Event] = []
+    @Published private(set) var eventGroups: [EventGroup] = []
 
     var calendarLastUpdate: Date? {
         Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url)))
@@ -36,6 +37,12 @@ final class ScheduleVM: ObservableObject {
 
         service.getEvents(for: facultyGroup)
             .assign(to: &$events)
+
+        $events
+            .compactMap { [weak self] events in
+                self?.sortByDate(classes: events)
+            }
+            .assign(to: &$eventGroups)
 
         calendarService.$calendar
             .map { $0 != nil }
@@ -84,5 +91,24 @@ final class ScheduleVM: ObservableObject {
             return false
         }
         return true
+    }
+
+    private func sortByDate(classes: [Event]) -> [EventGroup] {
+        var term = events.first?.term
+        var events: [Event] = []
+        var eventGroups: [EventGroup] = []
+        for event in classes {
+            if event.term == term {
+                events.append(event)
+            } else {
+                let eventGroup = EventGroup(title: term ?? "", events: events)
+                eventGroups.append(eventGroup)
+                events = []
+                term = event.term
+                events.append(event)
+            }
+        }
+
+        return eventGroups
     }
 }
