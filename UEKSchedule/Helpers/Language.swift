@@ -11,6 +11,9 @@ enum Language: String {
     case common_ok
     case common_faculties
     case common_showAll
+    case common_about
+    case common_email
+    case about_appDescription
     case faculties_empty
     case faculties_search_empty
     case schedule_createCalendar
@@ -34,14 +37,6 @@ extension String {
 }
 
 extension String {
-    static let common_ok = Language.common_ok.text
-    static let common_faculties = Language.common_faculties.text
-    static let common_showAll = Language.common_showAll.text
-    static let faculties_empty = Language.faculties_empty.text
-    static let faculties_search_empty = Language.faculties_search_empty.text
-    static let schedule_createCalendar = Language.schedule_createCalendar.text
-    static let schedule_updateCalendar = Language.schedule_updateCalendar.text
-    static let schedule_calendarExists = Language.schedule_calendarExists.text
 
     static func schedule_foundedEvents(count: Int) -> String {
         Language.schedule_foundedEvents.text.localize(value: count)

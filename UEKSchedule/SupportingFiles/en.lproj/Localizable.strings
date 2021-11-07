@@ -8,6 +8,10 @@
 "common_ok" = "OK";
 "common_faculties" = "Faculties";
 "common_showAll" = "Show all";
+"common_about" = "About";
+"common_email" = "Email";
+
+"about_appDescription" = "UEKSchedule is an app that allows to create calendar with events from \"Cracow University of Economics\" public schedule.\n\nThe application is based on data downloaded and scraped from the official website of the University of Economics in Crakow \"https://planzajec.uek.krakow.pl/\", which contains schedules available for individual faculties and groups.";
 
 "faculties_empty" = "Could not load faculties. Please try again later.";
 "faculties_search_empty" = "No faculties were found";

@@ -8,6 +8,10 @@
 "common_ok" = "OK";
 "common_faculties" = "Fakultety";
 "common_showAll" = "Pokaż wszystko";
+"common_about" = "Opis";
+"common_email" = "Email";
+
+"about_appDescription" = "UEKSchedule to aplikacja, która umożliwia stworzenie kalendarza z wydarzeniami z oficjalnego planu zajeć \"Uniwersytetu Ekonomicznego w Krakowie\"\n\nAplikacja bazuje na danych pobranych z oficjalnej strony Uniwerytetu Ekonomicznego w Krakowie \"https://planzajec.uek.krakow.pl/\", która zawiera listę zajęć dla dostępnych fakultetów i grup.";
 
 "faculties_empty" = "Nie udało się załadować fakultetów. Spróbuj ponownie później.";
 "faculties_search_empty" = "Nie znaleziono fakultetów z podaną frazą";

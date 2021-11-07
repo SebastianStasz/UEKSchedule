@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FC8E150A2715A86100A242D4 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8E15092715A86100A242D4 /* UserDefaultsKey.swift */; };
+		FCB9FEBB273843D2001EA79E /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9FEBA273843D2001EA79E /* Text+Ext.swift */; };
+		FCB9FEBD273844CF001EA79E /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9FEBC273844CF001EA79E /* Button+Ext.swift */; };
 		FCD9B3FD27369DBE002365B0 /* SSUtils in Frameworks */ = {isa = PBXBuildFile; productRef = FCD9B3FC27369DBE002365B0 /* SSUtils */; };
 		FCDA3B2B271559F900BBF08D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCDA3B2D271559F900BBF08D /* Localizable.strings */; };
 		FCDA3B3227155B8500BBF08D /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA3B3127155B8500BBF08D /* Language.swift */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		FC8E15092715A86100A242D4 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		FCB9FEBA273843D2001EA79E /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
+		FCB9FEBC273844CF001EA79E /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 		FCDA3B2C271559F900BBF08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCDA3B2E27155AE500BBF08D /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCDA3B3127155B8500BBF08D /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 			children = (
 				FCF2351A2712DAA400E717D5 /* Array+Ext.swift */,
 				FCF2353F27133A3400E717D5 /* View+Navigation.swift */,
+				FCB9FEBA273843D2001EA79E /* Text+Ext.swift */,
+				FCB9FEBC273844CF001EA79E /* Button+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 				FCDA3B3B27157DA900BBF08D /* TextButtonStyle.swift in Sources */,
 				FCF235292712F48100E717D5 /* ScheduleGroup.swift in Sources */,
 				FCF235252712EEC600E717D5 /* FacultyGroupsVM.swift in Sources */,
+				FCB9FEBD273844CF001EA79E /* Button+Ext.swift in Sources */,
 				FCF235372713178800E717D5 /* Event.swift in Sources */,
 				FCF2354D2713551A00E717D5 /* FacultiesService.swift in Sources */,
 				FC8E150A2715A86100A242D4 /* UserDefaultsKey.swift in Sources */,
@@ -350,6 +357,7 @@
 				FCF2353E27132FF700E717D5 /* CalendarService.swift in Sources */,
 				FCF235232712EEB300E717D5 /* FacultyGroupsView.swift in Sources */,
 				FCDA3B3227155B8500BBF08D /* Language.swift in Sources */,
+				FCB9FEBB273843D2001EA79E /* Text+Ext.swift in Sources */,
 				FCF2352F2712F7BA00E717D5 /* LoadingIndicator.swift in Sources */,
 				FCF235132712CA0F00E717D5 /* FacultiesVM.swift in Sources */,
 				FCF235112712C9D200E717D5 /* FacultiesView.swift in Sources */,

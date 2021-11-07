@@ -29,9 +29,9 @@ struct FacultiesView: View {
     private var emptyListDisclaimer: some View {
         Group {
             if viewModel.search.isEmpty {
-                Text(String.faculties_empty)
+                Text(.faculties_empty)
             } else {
-                Text(String.faculties_search_empty)
+                Text(.faculties_search_empty)
             }
         }
         .padding(.horizontal, 20)

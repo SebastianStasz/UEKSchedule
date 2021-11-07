@@ -25,7 +25,7 @@ struct ScheduleView: View {
 
             Section {
                 if viewModel.calendarExists, let date = viewModel.calendarLastUpdate {
-                    Text(String.schedule_calendarExists).textBodyThin
+                    Text(.schedule_calendarExists).textBodyThin
                     Text("Last update: \(date)").textBodyThin
                     Button(.schedule_updateCalendar, action: updateCalendar)
                 } else {
