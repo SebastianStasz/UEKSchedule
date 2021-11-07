@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SSUtils
 
 final class FacultyGroupsVM: ObservableObject {
 

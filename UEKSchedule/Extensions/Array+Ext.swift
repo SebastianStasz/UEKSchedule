@@ -12,8 +12,4 @@ extension Array {
         guard self.count > 1 else { return nil }
         return self[1]
     }
-
-    var isNotEmpty: Bool {
-        !self.isEmpty
-    }
 }

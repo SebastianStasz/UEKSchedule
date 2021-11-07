@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SSUtils
 
 @main
 struct UEKScheduleApp: App {
@@ -22,6 +23,6 @@ struct UEKScheduleApp: App {
     }
 
     private var toolbarContent: some ToolbarContent {
-        Toolbar.trailing(systemImage: .about) { isAboutPresented = true }
+        Toolbar.trailing(systemImage: SFSymbol.about.name) { isAboutPresented = true }
     }
 }

@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "SSUtils",
+        "repositoryURL": "https://github.com/SebastianStasz/SSUtils",
+        "state": {
+          "branch": "master",
+          "revision": "63c148effcc90ca1e88d627d5db5c36add9de467",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftSoup",
         "repositoryURL": "https://github.com/scinfu/SwiftSoup",
         "state": {

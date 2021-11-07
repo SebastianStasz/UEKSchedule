@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SSUtils
 
 struct FacultyGroupsView: View {
 
