@@ -13,11 +13,11 @@ struct AboutView: View {
             Section(header: Text(.common_about)) {
                 Text(.about_appDescription).textBodyThin
             }
-            Section(header: Text("Email")) {
+            Section(header: Text(.common_email)) {
                 Text("sebastianstaszczyk.1999@gmail.com").textBodyThin
             }
         }
-        .navigationTitle("UEKSchedule")
+        .navigationTitle(String.common_appName)
     }
 }
 

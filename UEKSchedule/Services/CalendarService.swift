@@ -67,6 +67,13 @@ final class CalendarService {
         createEvents(events: events, in: calendar)
         return nil
     }
+
+    func deleteCalendar() -> AppError? {
+        guard let calendar = calendar else {
+            return .deleteCalendar
+        }
+        return deleteCalendar(calendar)
+    }
 }
 
 // MARK: - Private
@@ -77,6 +84,18 @@ extension CalendarService {
         UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url))
         for event in events {
             createEvent(from: event, in: calendar)
+        }
+    }
+
+    private func deleteCalendar(_ calendar: EKCalendar) -> AppError? {
+        do {
+            UserDefaults.standard.removeObject(forKey: .UD_calendarExists(withUrl: facultyGroup.url))
+            UserDefaults.standard.removeObject(forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url))
+            try eventStore.removeCalendar(calendar, commit: true)
+            return nil
+        }
+        catch {
+            return.deleteCalendar
         }
     }
 

@@ -26,13 +26,15 @@ struct ScheduleView: View {
             Section {
                 if viewModel.calendarExists, let date = viewModel.calendarLastUpdate {
                     Text(.schedule_calendarExists).textBodyThin
-                    Text("Last update: \(date)").textBodyThin
-                    Button(.schedule_updateCalendar, action: updateCalendar)
+                    Text(String.schedule_lastUpdate(date.string(format: .medium, withTime: true))).textBodyThin
+                    buttonWithLoadingIndicator(.schedule_updateCalendar, action: updateCalendar)
+                    Button(String.schedule_deleteCalendar, action: presentDeleteCalendarAlert)
                 } else {
-                    Button(.schedule_createCalendar, action: createCalendar)
+                    buttonWithLoadingIndicator(.schedule_createCalendar, action: createCalendar)
                 }
             }
             .displayIf(viewModel.events.isNotEmpty)
+            .disabled(viewModel.isLoading || viewModel.isCalendarUpdating)
         }
         .overlay(LoadingIndicator(displayIf: viewModel.isLoading))
         .disabled(viewModel.isLoading)
@@ -41,6 +43,18 @@ struct ScheduleView: View {
         .alert(item: $viewModel.navigator.alert) { $0.body }
         .navigation(isActive: $isEventListPresented) {
             EventList(title: viewModel.facultyGroup.name, eventGroups: viewModel.eventGroups)
+        }
+        .alert(String.schedule_deleteCalendar, isPresented: $viewModel.navigator.isDeleteCalendarAlertPresented, actions: {
+            Button(String.common_delete, role: .destructive, action: deleteCalendar)
+            Button(String.common_cancel, role: .cancel, action: {})
+        }, message: { Text(String.schedule_deleteCalendar_message(calendarName: viewModel.calendarName ?? "")) } )
+    }
+
+    private func buttonWithLoadingIndicator(_ label: Language, action: @escaping () -> Void) -> some View {
+        HStack {
+            Button(label.text, action: action)
+            Spacer()
+            LoadingIndicator(displayIf: viewModel.isCalendarUpdating)
         }
     }
 
@@ -54,8 +68,16 @@ struct ScheduleView: View {
         viewModel.input.createCalendar.send()
     }
 
+    private func deleteCalendar() {
+        viewModel.input.deleteCalendar.send()
+    }
+
     private func presentEventList() {
         isEventListPresented = true
+    }
+
+    private func presentDeleteCalendarAlert() {
+        viewModel.input.showDeleteCalendarAlert.send()
     }
 }
 

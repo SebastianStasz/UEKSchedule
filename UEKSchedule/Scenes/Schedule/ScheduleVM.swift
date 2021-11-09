@@ -13,6 +13,8 @@ final class ScheduleVM: ObservableObject {
     struct Input {
         let updateCalendar = PassthroughSubject<Void, Never>()
         let createCalendar = PassthroughSubject<Void, Never>()
+        let deleteCalendar = PassthroughSubject<Void, Never>()
+        let showDeleteCalendarAlert = PassthroughSubject<Void, Never>()
     }
 
     private var cancellables: Set<AnyCancellable> = []
@@ -24,6 +26,7 @@ final class ScheduleVM: ObservableObject {
     @Published var navigator = ScheduleNavigator()
     @Published private(set) var calendarExists = false
     @Published private(set) var isLoading = false
+    @Published private(set) var isCalendarUpdating = false
     @Published private(set) var events: [Event] = []
     @Published private(set) var eventGroups: [EventGroup] = []
 
@@ -31,17 +34,27 @@ final class ScheduleVM: ObservableObject {
         Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url)))
     }
 
+    var calendarName: String? {
+        calendarService.calendar?.title
+    }
+
     init(facultyGroup: ScheduleGroup) {
         self.facultyGroup = facultyGroup
         self.calendarService = .init(facultyGroup: facultyGroup)
 
         service.getEvents(for: facultyGroup)
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.isLoading = true
+            })
             .assign(to: &$events)
 
         $events
             .compactMap { [weak self] events in
                 self?.sortByDate(classes: events)
             }
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.isLoading = false
+            })
             .assign(to: &$eventGroups)
 
         calendarService.$calendar
@@ -66,17 +79,34 @@ final class ScheduleVM: ObservableObject {
                 return .failedToUpdateCalendar(error)
             }
 
+        input.showDeleteCalendarAlert
+            .sink { [weak self] in
+                self?.navigator.navigate(to: .showDeleteCalendarAlert)
+            }
+            .store(in: &cancellables)
+
+        input.deleteCalendar
+            .asyncMap { [weak self] _ -> ScheduleNavigator.Popup? in
+                guard let self = self,
+                      await self.hasCalendarAccess(),
+                      let error = self.calendarService.deleteCalendar()
+                else { return nil }
+                return .failedToDeleteCalendar(error)
+            }
+            .sink { _ in }
+            .store(in: &cancellables)
+
         Publishers.Merge(input.createCalendar, input.updateCalendar)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.isLoading = true
+                self?.isCalendarUpdating = true
             }
             .store(in: &cancellables)
 
         Publishers.Merge(creatingCalendar, updatingCalendar)
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveOutput: { [weak self] _ in
-                self?.isLoading = false
+                self?.isCalendarUpdating = false
             })
             .compactMap { $0 }
             .sink { [weak self] in

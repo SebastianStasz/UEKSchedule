@@ -11,6 +11,7 @@ enum AppError: String {
     case getCalendarSource = "#001"
     case createCalendar = "#002"
     case updateCalendar = "#003"
+    case deleteCalendar = "#004"
 
     var code: String { rawValue }
 }
