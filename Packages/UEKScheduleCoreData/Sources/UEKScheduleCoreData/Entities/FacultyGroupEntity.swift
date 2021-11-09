@@ -18,10 +18,10 @@ public class FacultyGroupEntity: NSManagedObject {
 
 public extension FacultyGroupEntity {
 
-    @discardableResult func create(facultyGroup: FacultyGroup, in context: NSManagedObjectContext) -> FacultyGroupEntity {
+    @discardableResult static func create(facultyGroupData: FacultyGroupData, in context: NSManagedObjectContext) -> FacultyGroupEntity {
         let facultyGroup = FacultyGroupEntity(context: context)
-        facultyGroup.name = facultyGroup.name
-        facultyGroup.url = facultyGroup.url
+        facultyGroup.name = facultyGroupData.name
+        facultyGroup.url = facultyGroupData.urlStr
         return facultyGroup
     }
 }

@@ -1,6 +1,6 @@
 //
 //  NSManagedObject+Ext.swift
-//  UEKSchedule
+//  UEKScheduleCoreData
 //
 //  Created by Sebastian Staszczyk on 09/11/2021.
 //
