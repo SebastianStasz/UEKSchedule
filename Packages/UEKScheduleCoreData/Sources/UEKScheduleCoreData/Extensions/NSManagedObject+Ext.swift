@@ -21,4 +21,19 @@ extension NSManagedObject {
         request.predicate = predicate
         return request
     }
+
+    /// Returns the managed object context with which the managed object is registered, if found.
+    func getContext() -> NSManagedObjectContext? {
+        guard let context = self.managedObjectContext else {
+            assertionFailure("Context coulnd not be found in: \(self.description)")
+            return nil
+        }
+        return context
+    }
+
+    /// Specifies an object that should be removed from its persistent store when changes are committed.
+    func delete() {
+        guard let context = getContext() else { return }
+        context.delete(self)
+    }
 }

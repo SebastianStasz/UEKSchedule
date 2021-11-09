@@ -38,6 +38,20 @@ final class FacultyGroupEntityTests: XCTestCase, CoreDataSteps {
         // Save context.
         try saveContext()
     }
+
+    func test_delete_faculty_group_entity() throws {
+        // Create faculty group entity using sample data.
+        let facultyGroupEntity = createFacultyGroupEntity(data: .sample1)
+
+        // Delete faculty group entity.
+        facultyGroupEntity.delete()
+
+        // Verify that body parameter entity was deleted.
+        try fetchRequestShouldReturnElements(0, for: FacultyGroupEntity.self)
+
+        // Save context.
+        try saveContext()
+    }
 }
 
 // MARK: - Steps
@@ -50,5 +64,6 @@ private extension FacultyGroupEntityTests {
     func verifyFacultyGroupData(in entity: FacultyGroupEntity, data: FacultyGroupData) throws {
         XCTAssertEqual(entity.name, data.name)
         XCTAssertEqual(entity.url, data.urlStr)
+        XCTAssertEqual(entity.lastUpdate, data.lastUpdate)
     }
 }

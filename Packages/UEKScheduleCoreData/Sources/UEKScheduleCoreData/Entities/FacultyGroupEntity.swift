@@ -12,16 +12,18 @@ import CoreData
 public class FacultyGroupEntity: NSManagedObject {
     @NSManaged public private(set) var name: String
     @NSManaged public private(set) var url: String
+    @NSManaged public private(set) var lastUpdate: Date
 }
 
 // MARK: - Methods
 
 public extension FacultyGroupEntity {
 
-    @discardableResult static func create(facultyGroupData: FacultyGroupData, in context: NSManagedObjectContext) -> FacultyGroupEntity {
+    @discardableResult static func create(facultyGroupData data: FacultyGroupData, in context: NSManagedObjectContext) -> FacultyGroupEntity {
         let facultyGroup = FacultyGroupEntity(context: context)
-        facultyGroup.name = facultyGroupData.name
-        facultyGroup.url = facultyGroupData.urlStr
+        facultyGroup.name = data.name
+        facultyGroup.url = data.urlStr
+        facultyGroup.lastUpdate = data.lastUpdate
         return facultyGroup
     }
 }
