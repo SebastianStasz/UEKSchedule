@@ -47,6 +47,7 @@
 		FC8E15092715A86100A242D4 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		FCB9FEBA273843D2001EA79E /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
 		FCB9FEBC273844CF001EA79E /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
+		FCC2585B273AE81200094EBE /* UEKScheduleCoreData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = UEKScheduleCoreData; path = Packages/UEKScheduleCoreData; sourceTree = "<group>"; };
 		FCDA3B2C271559F900BBF08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCDA3B2E27155AE500BBF08D /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCDA3B3127155B8500BBF08D /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 		FCEF4322270E37DD0073E566 = {
 			isa = PBXGroup;
 			children = (
+				FCC2585B273AE81200094EBE /* UEKScheduleCoreData */,
 				FCEF432D270E37DD0073E566 /* UEKSchedule */,
 				FCEF432C270E37DD0073E566 /* Products */,
 			);
