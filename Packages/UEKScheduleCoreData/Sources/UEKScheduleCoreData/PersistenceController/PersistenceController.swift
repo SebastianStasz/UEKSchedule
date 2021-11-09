@@ -5,7 +5,7 @@
 //  Created by Sebastian Staszczyk on 09/11/2021.
 //
 
-import Combine
+import CoreData
 import Foundation
 
 public final class PersistenceController {
