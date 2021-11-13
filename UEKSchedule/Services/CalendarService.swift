@@ -5,8 +5,10 @@
 //  Created by Sebastian Staszczyk on 10/10/2021.
 //
 
+import UEKScheduleCoreData
 import EventKit
 import Foundation
+import CoreData
 
 final class CalendarService {
     private var eventStore = EKEventStore()
@@ -14,16 +16,25 @@ final class CalendarService {
     private var calendarSource: EKSource?
 
     @Published private var calendars: [EKCalendar] = []
+    @Published private(set) var facultyGroupEntity: FacultyGroupEntity?
     @Published private(set) var calendar: EKCalendar?
+    let context: NSManagedObjectContext
 
-    init(facultyGroup: ScheduleGroup) {
+    init(facultyGroup: ScheduleGroup, context: NSManagedObjectContext = PersistenceController.shared.context) {
         self.facultyGroup = facultyGroup
+        self.context = context
         setCalendarSource()
 
         $calendars
-            .map { [weak self] _ -> EKCalendar? in
-                let calendarId = UserDefaults.standard.string(forKey: .UD_calendarExists(withUrl: facultyGroup.url))
-                return self?.eventStore.calendars(for: .event).first { $0.calendarIdentifier == calendarId }
+            .map { _ -> FacultyGroupEntity? in
+                let request = FacultyGroupEntity.getAllNSFetch(filtering: [.byName(facultyGroup.name)])
+                return try? context.fetch(request).first
+            }
+            .assign(to: &$facultyGroupEntity)
+
+        $facultyGroupEntity
+            .compactMap { [weak self] facultyGroup in
+                self?.eventStore.calendars(for: .event).first { $0.calendarIdentifier == facultyGroup?.calendarId }
             }
             .assign(to: &$calendar)
     }
@@ -50,7 +61,8 @@ final class CalendarService {
 
         do {
             try eventStore.saveCalendar(calendar, commit: true)
-            UserDefaults.standard.set(calendar.calendarIdentifier, forKey: .UD_calendarExists(withUrl: facultyGroup.url))
+            let data = FacultyGroupData(name: facultyGroup.name, urlStr: facultyGroup.url, calendarId: calendar.calendarIdentifier)
+            FacultyGroupEntity.create(facultyGroupData: data, in: context)
             loadCalendars()
             createEvents(events: events, in: calendar)
             return nil
@@ -63,6 +75,7 @@ final class CalendarService {
         guard let calendar = calendar else {
             return .updateCalendar
         }
+        facultyGroupEntity?.modify(lastUpdate: Date())
         deleteEvents(in: calendar)
         createEvents(events: events, in: calendar)
         return nil
@@ -74,6 +87,13 @@ final class CalendarService {
         }
         return deleteCalendar(calendar)
     }
+
+    func loadCalendars() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.calendars = self.eventStore.calendars(for: .event)
+        }
+    }
 }
 
 // MARK: - Private
@@ -81,7 +101,6 @@ final class CalendarService {
 extension CalendarService {
 
     private func createEvents(events: [Event], in calendar: EKCalendar) {
-        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url))
         for event in events {
             createEvent(from: event, in: calendar)
         }
@@ -89,13 +108,11 @@ extension CalendarService {
 
     private func deleteCalendar(_ calendar: EKCalendar) -> AppError? {
         do {
-            UserDefaults.standard.removeObject(forKey: .UD_calendarExists(withUrl: facultyGroup.url))
-            UserDefaults.standard.removeObject(forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url))
+            facultyGroupEntity?.delete()
             try eventStore.removeCalendar(calendar, commit: true)
             return nil
-        }
-        catch {
-            return.deleteCalendar
+        } catch {
+            return AppError.deleteCalendar
         }
     }
 
@@ -140,12 +157,5 @@ extension CalendarService {
         let basic = eventStore.defaultCalendarForNewEvents?.source
         let local = eventStore.sources.first(where: { $0.sourceType == .local })
         calendarSource = basic ?? local
-    }
-
-    private func loadCalendars() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.calendars = self.eventStore.calendars(for: .event)
-        }
     }
 }

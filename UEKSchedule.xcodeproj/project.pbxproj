@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC1677F1273B09A1000F3005 /* UEKScheduleCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = FC1677F0273B09A1000F3005 /* UEKScheduleCoreData */; };
 		FC8E150A2715A86100A242D4 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8E15092715A86100A242D4 /* UserDefaultsKey.swift */; };
 		FCB9FEBB273843D2001EA79E /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9FEBA273843D2001EA79E /* Text+Ext.swift */; };
 		FCB9FEBD273844CF001EA79E /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9FEBC273844CF001EA79E /* Button+Ext.swift */; };
@@ -89,12 +90,20 @@
 			files = (
 				FCD9B3FD27369DBE002365B0 /* SSUtils in Frameworks */,
 				FCF408CF2711DDF900F24340 /* SwiftSoup in Frameworks */,
+				FC1677F1273B09A1000F3005 /* UEKScheduleCoreData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC1677EF273B09A1000F3005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FCDA3B2F27155B2F00BBF08D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +139,7 @@
 				FCC2585B273AE81200094EBE /* UEKScheduleCoreData */,
 				FCEF432D270E37DD0073E566 /* UEKSchedule */,
 				FCEF432C270E37DD0073E566 /* Products */,
+				FC1677EF273B09A1000F3005 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -270,11 +280,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				FCA281E0273B084F00483217 /* PBXTargetDependency */,
 			);
 			name = UEKSchedule;
 			packageProductDependencies = (
 				FCF408CE2711DDF900F24340 /* SwiftSoup */,
 				FCD9B3FC27369DBE002365B0 /* SSUtils */,
+				FC1677F0273B09A1000F3005 /* UEKScheduleCoreData */,
 			);
 			productName = UEKSchedule;
 			productReference = FCEF432B270E37DD0073E566 /* UEKSchedule.app */;
@@ -369,6 +381,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCA281E0273B084F00483217 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = FCA281DF273B084F00483217 /* UEKScheduleCoreData */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FCDA3B2D271559F900BBF08D /* Localizable.strings */ = {
@@ -608,6 +627,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FC1677F0273B09A1000F3005 /* UEKScheduleCoreData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UEKScheduleCoreData;
+		};
+		FCA281DF273B084F00483217 /* UEKScheduleCoreData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UEKScheduleCoreData;
+		};
 		FCD9B3FC27369DBE002365B0 /* SSUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FCD9B3FB27369DBE002365B0 /* XCRemoteSwiftPackageReference "SSUtils" */;

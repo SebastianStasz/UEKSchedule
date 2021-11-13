@@ -46,7 +46,7 @@ final class FacultyGroupEntityTests: XCTestCase, CoreDataSteps {
         // Delete faculty group entity.
         facultyGroupEntity.delete()
 
-        // Verify that body parameter entity was deleted.
+        // Verify that group entity entity was deleted.
         try fetchRequestShouldReturnElements(0, for: FacultyGroupEntity.self)
 
         // Save context.
@@ -65,5 +65,6 @@ private extension FacultyGroupEntityTests {
         XCTAssertEqual(entity.name, data.name)
         XCTAssertEqual(entity.url, data.urlStr)
         XCTAssertEqual(entity.lastUpdate, data.lastUpdate)
+        XCTAssertEqual(entity.calendarId, data.calendarId)
     }
 }

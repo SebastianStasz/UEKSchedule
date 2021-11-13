@@ -11,6 +11,14 @@ public struct FacultyGroupData {
     public let name: String
     public let urlStr: String
     public let lastUpdate: Date
+    public let calendarId: String
+
+    public init(name: String, urlStr: String, calendarId: String) {
+        self.name = name
+        self.urlStr = urlStr
+        self.calendarId = calendarId
+        self.lastUpdate = Date()
+    }
 }
 
 public extension FacultyGroupData {
@@ -23,5 +31,5 @@ public extension FacultyGroupData {
 // MARK: - Sample Data
 
 extension FacultyGroupData {
-    static let sample1 = FacultyGroupData(name: "ZZISS1-3512IO", urlStr: "https://planzajec.uek.krakow.pl/index.php?typ=G&id=184261&okres=2", lastUpdate: Date())
+    static let sample1 = FacultyGroupData(name: "ZZISS1-3512IO", urlStr: "https://planzajec.uek.krakow.pl/index.php?typ=G&id=184261&okres=2", calendarId: "1")
 }

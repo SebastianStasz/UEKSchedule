@@ -44,10 +44,13 @@ struct ScheduleView: View {
         .navigation(isActive: $isEventListPresented) {
             EventList(title: viewModel.facultyGroup.name, eventGroups: viewModel.eventGroups)
         }
-        .alert(String.schedule_deleteCalendar, isPresented: $viewModel.navigator.isDeleteCalendarAlertPresented, actions: {
+        .confirmationDialog(String.schedule_deleteCalendar, isPresented: $viewModel.navigator.isDeleteCalendarAlertPresented, actions: {
             Button(String.common_delete, role: .destructive, action: deleteCalendar)
             Button(String.common_cancel, role: .cancel, action: {})
-        }, message: { Text(String.schedule_deleteCalendar_message(calendarName: viewModel.calendarName ?? "")) } )
+        }, message: { Text(String.schedule_deleteCalendar_message(calendarName: viewModel.calendarName ?? "")) })
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            viewModel.input.returnFromBackground.send()
+        }
     }
 
     private func buttonWithLoadingIndicator(_ label: Language, action: @escaping () -> Void) -> some View {

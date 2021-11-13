@@ -15,6 +15,7 @@ final class ScheduleVM: ObservableObject {
         let createCalendar = PassthroughSubject<Void, Never>()
         let deleteCalendar = PassthroughSubject<Void, Never>()
         let showDeleteCalendarAlert = PassthroughSubject<Void, Never>()
+        let returnFromBackground = PassthroughSubject<Void, Never>()
     }
 
     private var cancellables: Set<AnyCancellable> = []
@@ -31,7 +32,7 @@ final class ScheduleVM: ObservableObject {
     @Published private(set) var eventGroups: [EventGroup] = []
 
     var calendarLastUpdate: Date? {
-        Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: .UD_calendarLastUpdate(withUrl: facultyGroup.url)))
+        calendarService.facultyGroupEntity?.lastUpdate
     }
 
     var calendarName: String? {
@@ -94,6 +95,12 @@ final class ScheduleVM: ObservableObject {
                 return .failedToDeleteCalendar(error)
             }
             .sink { _ in }
+            .store(in: &cancellables)
+
+        input.returnFromBackground
+            .sink { [weak self] in
+                self?.calendarService.loadCalendars()
+            }
             .store(in: &cancellables)
 
         Publishers.Merge(input.createCalendar, input.updateCalendar)

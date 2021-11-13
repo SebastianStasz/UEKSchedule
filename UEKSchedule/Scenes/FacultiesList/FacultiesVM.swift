@@ -15,6 +15,7 @@ final class FacultiesVM: ObservableObject {
     let refreshFaculties = PassthroughSubject<Void, Never>()
 
     @Published private(set) var faculties: [ScheduleGroup] = []
+    @Published private(set) var observedFaculties: [ScheduleGroup] = []
     @Published private(set) var isLoading = true
     @Published var search = ""
 

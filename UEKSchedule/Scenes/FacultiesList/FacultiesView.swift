@@ -14,8 +14,15 @@ struct FacultiesView: View {
 
     var body: some View {
         List {
-            ForEach(viewModel.faculties) {
-                NavigationLink($0.name, destination: FacultyGroupsView(faculty: $0))
+            Section(header: Text("Observed")) {
+                ForEach(viewModel.observedFaculties) {
+                    NavigationLink($0.name, destination: FacultyGroupsView(faculty: $0))
+                }
+            }
+            Section(header: Text("All")) {
+                ForEach(viewModel.faculties) {
+                    NavigationLink($0.name, destination: FacultyGroupsView(faculty: $0))
+                }
             }
         }
         .overlay(LoadingIndicator(displayIf: viewModel.isLoading))
