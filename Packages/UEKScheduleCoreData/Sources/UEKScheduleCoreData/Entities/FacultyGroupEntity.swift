@@ -29,24 +29,6 @@ public extension FacultyGroupEntity {
         return facultyGroup
     }
 
-    @discardableResult
-    static func delete(withCalendarId calendarId: String, in context: NSManagedObjectContext) -> Bool {
-        let request = FacultyGroupEntity.getAllNSFetch(filtering: [.byCalendarId(calendarId)])
-        guard let facultyGroup = try? context.fetch(request).first else {
-            return false
-        }
-        facultyGroup.delete()
-        return true
-    }
-
-    static func getCalendarId(for facultyGroup: String, in context: NSManagedObjectContext) -> String? {
-        let request = FacultyGroupEntity.getAllNSFetch(filtering: [.byName(facultyGroup)])
-        guard let facultyGroup = try? context.fetch(request).first else {
-            return nil
-        }
-        return facultyGroup.calendarId
-    }
-
     func modify(lastUpdate: Date) {
         self.lastUpdate = lastUpdate
     }

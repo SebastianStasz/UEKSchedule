@@ -7,6 +7,8 @@
 
 import Combine
 import Foundation
+import UEKScheduleCoreData
+import SwiftUI
 
 final class FacultiesVM: ObservableObject {
 
@@ -15,11 +17,13 @@ final class FacultiesVM: ObservableObject {
     let refreshFaculties = PassthroughSubject<Void, Never>()
 
     @Published private(set) var faculties: [ScheduleGroup] = []
-    @Published private(set) var observedFaculties: [ScheduleGroup] = []
+    @Published private(set) var observedFaculties: FetchRequest<FacultyGroupEntity>
     @Published private(set) var isLoading = true
     @Published var search = ""
 
     init() {
+        observedFaculties = FacultyGroupEntity.getAll(sorting: [.byName(.forward)])
+
         let refresh = refreshFaculties
             .handleEvents(receiveOutput: { [weak self] in
                 self?.faculties = []

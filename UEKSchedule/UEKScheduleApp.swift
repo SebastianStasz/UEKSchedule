@@ -7,10 +7,12 @@
 
 import SwiftUI
 import SSUtils
+import UEKScheduleCoreData
 
 @main
 struct UEKScheduleApp: App {
 
+    @Environment(\.scenePhase) var scenePhase
     @State private var isAboutPresented = false
 
     var body: some Scene {
@@ -19,6 +21,12 @@ struct UEKScheduleApp: App {
                 .navigation(isActive: $isAboutPresented, destination: AboutView.init)
                 .toolbar { toolbarContent }
                 .embedInNavigationView(title: "Faculties")
+                .onChange(of: scenePhase) { phase in
+                    if phase == .background {
+                        PersistenceController.shared.save()
+                    }
+                }
+                .environment(\.managedObjectContext, PersistenceController.shared.context)
         }
     }
 

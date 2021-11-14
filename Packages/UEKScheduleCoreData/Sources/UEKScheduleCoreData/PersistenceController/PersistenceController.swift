@@ -28,7 +28,7 @@ public final class PersistenceController {
         }
     }
 
-    func save() {
+    public func save() {
         do { try context.save() }
         catch let error { fatalError("Saving context error: \(error)") }
     }

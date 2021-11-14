@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC1677F1273B09A1000F3005 /* UEKScheduleCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = FC1677F0273B09A1000F3005 /* UEKScheduleCoreData */; };
+		FC5CDE3D273FC9420079D003 /* ObservedFacultiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5CDE3C273FC9420079D003 /* ObservedFacultiesView.swift */; };
 		FC8E150A2715A86100A242D4 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8E15092715A86100A242D4 /* UserDefaultsKey.swift */; };
 		FCB9FEBB273843D2001EA79E /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9FEBA273843D2001EA79E /* Text+Ext.swift */; };
 		FCB9FEBD273844CF001EA79E /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB9FEBC273844CF001EA79E /* Button+Ext.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC5CDE3C273FC9420079D003 /* ObservedFacultiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedFacultiesView.swift; sourceTree = "<group>"; };
 		FC8E15092715A86100A242D4 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		FCB9FEBA273843D2001EA79E /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
 		FCB9FEBC273844CF001EA79E /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				FCF235102712C9D200E717D5 /* FacultiesView.swift */,
 				FCF235122712CA0F00E717D5 /* FacultiesVM.swift */,
+				FC5CDE3C273FC9420079D003 /* ObservedFacultiesView.swift */,
 				FCF2354C2713551A00E717D5 /* FacultiesService.swift */,
 			);
 			path = FacultiesList;
@@ -359,6 +362,7 @@
 				FCDA3B3827157C6500BBF08D /* Typography.swift in Sources */,
 				FCDA3B3B27157DA900BBF08D /* TextButtonStyle.swift in Sources */,
 				FCF235292712F48100E717D5 /* ScheduleGroup.swift in Sources */,
+				FC5CDE3D273FC9420079D003 /* ObservedFacultiesView.swift in Sources */,
 				FCF235252712EEC600E717D5 /* FacultyGroupsVM.swift in Sources */,
 				FCB9FEBD273844CF001EA79E /* Button+Ext.swift in Sources */,
 				FCF235372713178800E717D5 /* Event.swift in Sources */,

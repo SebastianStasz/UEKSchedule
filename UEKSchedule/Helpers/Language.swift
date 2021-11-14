@@ -16,6 +16,8 @@ enum Language: String {
     case common_email
     case common_cancel
     case common_delete
+    case common_all
+    case common_observed
 
     case about_appDescription
 

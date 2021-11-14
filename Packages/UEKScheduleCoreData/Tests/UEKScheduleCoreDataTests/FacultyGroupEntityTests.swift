@@ -39,6 +39,23 @@ final class FacultyGroupEntityTests: XCTestCase, CoreDataSteps {
         try saveContext()
     }
 
+    func test_modify_faculty_group_entity() throws {
+        // Create faculty group entity using sample data.
+        let facultyGroupEntity = createFacultyGroupEntity(data: .sample1)
+
+        // Create new date to update faculty group entity.
+        let newDate = Date()
+
+        // Modify faculty group entity.
+        facultyGroupEntity.modify(lastUpdate: newDate)
+
+        // Verify that group entity entity was modified.
+        try verifyFacultyGroupData(in: facultyGroupEntity, data: .sample1, lastUpdate: newDate)
+
+        // Save context.
+        try saveContext()
+    }
+
     func test_delete_faculty_group_entity() throws {
         // Create faculty group entity using sample data.
         let facultyGroupEntity = createFacultyGroupEntity(data: .sample1)
@@ -61,10 +78,10 @@ private extension FacultyGroupEntityTests {
         FacultyGroupEntity.create(facultyGroupData: data, in: context)
     }
 
-    func verifyFacultyGroupData(in entity: FacultyGroupEntity, data: FacultyGroupData) throws {
+    func verifyFacultyGroupData(in entity: FacultyGroupEntity, data: FacultyGroupData, lastUpdate: Date? = nil) throws {
         XCTAssertEqual(entity.name, data.name)
         XCTAssertEqual(entity.url, data.urlStr)
-        XCTAssertEqual(entity.lastUpdate, data.lastUpdate)
+        XCTAssertEqual(entity.lastUpdate, lastUpdate ?? data.lastUpdate)
         XCTAssertEqual(entity.calendarId, data.calendarId)
     }
 }

@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import UEKScheduleCoreData
 
 final class ScheduleVM: ObservableObject {
 
@@ -147,5 +148,11 @@ final class ScheduleVM: ObservableObject {
         }
 
         return eventGroups
+    }
+}
+
+extension ScheduleVM {
+    convenience init(facultyGroupEntity: FacultyGroupEntity) {
+        self.init(facultyGroup: .init(name: facultyGroupEntity.name, url: facultyGroupEntity.url))
     }
 }
