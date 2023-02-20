@@ -19,6 +19,10 @@ struct Event {
         "Typ: \(type)\nNauczyciel: \(leader)"
     }
 
+    var typeSymbol: String {
+        type == "wykład" ? "W" : "Ć"
+    }
+
     private var date: Date? {
         DateService.shared.getDate(from: term)
     }

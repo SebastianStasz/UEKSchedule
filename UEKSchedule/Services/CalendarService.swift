@@ -133,7 +133,7 @@ extension CalendarService {
         else { return }
         let event = EKEvent(eventStore: eventStore)
         event.calendar = calendar
-        event.title = eventData.name
+        event.title = eventData.typeSymbol + ": " + eventData.name
         event.location = eventData.place
         event.notes = eventData.description
         event.startDate = startDate
